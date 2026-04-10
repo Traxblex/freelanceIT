@@ -1,0 +1,23 @@
+Liste des fonctionnalité par rôle:
+
+User : voir uniquement le site mais ne peux pas postuler ni émettre des missions.
+
+
+
+dev : 
+
+	postuler a une mission
+	voir les mission
+	annuler une candidature a une mission
+	gerer sont profil.
+...
+
+entreprise : 
+	créer une mission
+	voir les mission
+	modérer une candidature de mission
+	voir les profils des dev
+…
+
+admin : 
+modérateur de tout les tables
