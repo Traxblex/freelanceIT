@@ -1,1 +1,1 @@
-<h1> ACCUEIL</h1>
+accueil
