@@ -8,7 +8,7 @@
     
   </head>
 <body>
-    <nav class="bg-white shadow-md">
+    <nav class="bg-white shadow-md fixed w-full z-10 top-0">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
             
@@ -19,9 +19,9 @@
                 </div>
 
                 <div class="hidden md:flex space-x-7">
-                    <a href="index.php?page=index" class="text-gray-600 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition">Accueil</a>
-                    <a href="index.php?page=mission" class="text-gray-600 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition">Missions</a>
-                    <a href="index.php?page=freelance" class="text-gray-600 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium transition">Freelances</a>
+                    <a href="index.php?page=index" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition">Accueil</a>
+                    <a href="index.php?page=mission" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition">Missions</a>
+                    <a href="index.php?page=freelance" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition">Freelances</a>
                 </div>
                 
                 <div class="hidden md:flex space-x-6">
@@ -31,11 +31,11 @@
                         </svg>
                         <span>Se connecter</span>
                     </a>
-                    <a href="index.php?page=ajouterMission" class="bg-black text-white hover:bg-red-700 px-4 py-2 rounded-md text-sm font-medium transition">Poster une mission</a>
+                    <a href="index.php?page=ajouterMission" class="bg-black text-white hover:bg-blue-700 px-4 py-2 rounded-md text-sm font-medium transition">Poster une mission</a>
                 </div>
 
                 <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-button" class="text-gray-600 hover:text-red-600 focus:outline-none">
+                    <button id="mobile-menu-button" class="text-gray-600 hover:text-blue-600 focus:outline-none">
                     <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
@@ -46,11 +46,11 @@
   </div>
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="index.php?page=index" class="block text-gray-600 hover:text-red-600 hover:bg-gray-50 px-3 py-2 rounded-md text-base font-medium">Accueil</a>
-                <a href="index.php?page=mission" class="block text-gray-600 hover:text-red-600 hover:bg-gray-50 px-3 py-2 rounded-md text-base font-medium">Missions</a>
-                <a href="index.php?page=freelance" class="block text-gray-600 hover:text-red-600 hover:bg-gray-50 px-3 py-2 rounded-md text-base font-medium">Freelances</a>
-                <a href="index.php?page=connexion" class="block mt-4 text-black hover:text-red-500 hover:bg-gray-50 text-center px-3 py-2 rounded-md text-base font-medium">Se connecter</a>
-                <a href="index.php?page=ajouterMission" class="block mt-4 bg-black text-white hover:bg-red-700 text-center px-4 py-2 rounded-md text-base font-medium">Poster une mission</a>
+                <a href="index.php?page=index" class="block text-gray-600 hover:text-blue-600 hover:bg-gray-50 px-3 py-2 rounded-md text-base font-medium">Accueil</a>
+                <a href="index.php?page=mission" class="block text-gray-600 hover:text-blue-600 hover:bg-gray-50 px-3 py-2 rounded-md text-base font-medium">Missions</a>
+                <a href="index.php?page=freelance" class="block text-gray-600 hover:text-blue-600 hover:bg-gray-50 px-3 py-2 rounded-md text-base font-medium">Freelances</a>
+                <a href="index.php?page=connexion" class="block mt-4 text-black hover:text-blue-500 hover:bg-gray-50 text-center px-3 py-2 rounded-md text-base font-medium">Se connecter</a>
+                <a href="index.php?page=ajouterMission" class="block mt-4 bg-black text-white hover:bg-blue-700 text-center px-4 py-2 rounded-md text-base font-medium">Poster une mission</a>
             </div>
         </div>
     </nav>
