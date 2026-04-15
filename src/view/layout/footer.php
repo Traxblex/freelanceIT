@@ -1,4 +1,4 @@
-<footer aria-activedescendant="footer" class="bg-blue-500 fixed bottom-0 w-full">
+<footer aria-activedescendant="footer" class="bg-blue-500 relative bottom-0 w-full">
 <div class="grid grid-flow-col md:grid-flow-row-dense grid-cols-3 grid-rows-1 md:grid-rows-3 gap-4 ">
         <div class="">
             <a href="index.php?page=index" class="text-2xl font-bold text-white hover:text-gray-300 transition duration-300">
