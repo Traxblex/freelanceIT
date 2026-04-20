@@ -1,4 +1,4 @@
-<footer class="bg-white shadow-md">
+<footer class="bg-white shadow-md ">
     <div class="container px-6 py-12 mx-auto">
         <div class="md:flex md:-mx-3 md:items-center md:justify-between">
             <h1 class="text-xl font-semibold tracking-tight  md:mx-3 xl:text-2xl ">Prêt à démarrer votre prochain projet </h1>
@@ -41,9 +41,9 @@
                 <p class="font-semibold text-gray-800 ">À Propos</p>
 
                 <div class="flex flex-col items-start mt-5 space-y-2">
-                    <a href="#" class="text-gray-600 transition-colors duration-300  dark:hover:text-blue-400 hover:underline hover:text-blue-500">Qui sommes-nous</a>
+                    <a href="index.php?page=apropos" class="text-gray-600 transition-colors duration-300  dark:hover:text-blue-400 hover:underline hover:text-blue-500">Qui sommes-nous</a>
                     <a href="#" class="text-gray-600 transition-colors duration-300  dark:hover:text-blue-400 hover:underline hover:text-blue-500">Notre philosophie</a>
-                    <a href="#" class="text-gray-600 transition-colors duration-300  dark:hover:text-blue-400 hover:underline hover:text-blue-500">FAQ</a>
+                    <a href="index.php?page=faq" class="text-gray-600 transition-colors duration-300  dark:hover:text-blue-400 hover:underline hover:text-blue-500">FAQ</a>
                 </div>
             </div>
 
@@ -60,7 +60,7 @@
         <hr class="my-6 border-gray-200 md:my-10 dark:border-gray-700">
         <div class="flex flex-col items-center justify-between sm:flex-row">
             <a href="index.php?page=index" class="flex items-center text-gray-800 transition-colors duration-300  dark:hover:text-blue-400 hover:text-blue-500">
-                <img class="w-auto h-7" src="public/img/logo_freelanceIT.png" alt="Your Company">
+                <img class="w-auto h-7" src="public/assets/img/logo_freelanceIT.png" alt="Your Company">
             </a>
                 <div class="flex mt-3 -mx-2 sm:mt-0">
                 <a href="#" class="mx-2 text-gray-400 hover:text-blue-500" aria-label="Reddit">

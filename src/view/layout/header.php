@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <link rel="shortcut icon" href="public/img/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="public/assets/img/favicon.png" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     
@@ -14,7 +14,7 @@
             
                 <div class="flex-shrink-0 flex items-center"> <!-- Ajout de flex items-center pour centrer verticalement le logo -->
                     <a href="index.php?page=index" class="text-2xl font-bold text-gray-800 hover:text-red-600 transition duration-300">
-                    <img src="public/img/logo_freelanceIT.png" alt="Logo" class="h-12 w-auto mr-2"> <!-- Logo à gauche du texte -->
+                    <img src="public/assets/img/logo_freelanceIT.png" alt="Logo" class="h-12 w-auto mr-2"> <!-- Logo à gauche du texte -->
                     </a>
                 </div>
 

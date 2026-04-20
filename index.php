@@ -28,6 +28,21 @@ switch ($page):
     case "ajouterFreelance":
         include("src/view/freelance/ajouterFreelance.php");
         break;
+    case "apropos":
+        include("src/view/apropos/apropos.php");
+        break;
+    case "contact":
+        include("src/view/contact/contact.php");
+        break;
+    case "profil":
+        include("src/view/profil/profil.php");
+        break;
+    case "apropos":
+        include("src/view/apropos/apropos.php");
+        break;
+    case"faq":
+        include("src/view/apropos/faq.php");
+        break;
     default :
         include("src/view/accueil/index.php");
         break;
