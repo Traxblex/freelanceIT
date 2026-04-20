@@ -1,15 +1,14 @@
 CREATE DATABASE freelanceIT;
 USE freelanceIT;
+
 CREATE TABLE utilisateurs (
   id int(11) NOT NULL AUTO_INCREMENT,
-  nom varchar(255) NOT NULL,
-  prenom varchar(255) NOT NULL,
-  email varchar(255) NOT NULL UNIQUE,
+  email varchar(255) NOT NULL,
   mot_de_passe varchar(255) NOT NULL,
   role varchar(50) NOT NULL,
   date_inscription date NOT NULL,
   PRIMARY KEY (id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4; /** engine de stockage InnoDB pour les transactions et les clés étrangères, charset utf8mb4 pour supporter les emojis et les caractères spéciaux **/
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE entreprises (
   id int(11) NOT NULL AUTO_INCREMENT,
@@ -19,7 +18,7 @@ CREATE TABLE entreprises (
   description text DEFAULT NULL,
   adresse varchar(255) DEFAULT NULL,
   PRIMARY KEY (id),
-  FOREIGN KEY (id_utilisateur) REFERENCES utilisateurs(id) ON DELETE CASCADE /* ON DELETE CASCADE pour supprimer l'entreprise si l'utilisateur est supprimé */
+  FOREIGN KEY (id_utilisateur) REFERENCES utilisateurs(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE profils_dev (
@@ -29,15 +28,6 @@ CREATE TABLE profils_dev (
   competences text DEFAULT NULL,
   cv_url varchar(255) DEFAULT NULL,
   est_disponible tinyint(1) DEFAULT 1,
-  PRIMARY KEY (id),
-  FOREIGN KEY (id_utilisateur) REFERENCES utilisateurs(id) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-CREATE TABLE administrateurs (
-  id int(11) NOT NULL AUTO_INCREMENT,
-  id_utilisateur int(11) NOT NULL,
-  niveau_droits varchar(50) DEFAULT 'moderateur',
-  telephone_pro varchar(20) DEFAULT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (id_utilisateur) REFERENCES utilisateurs(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

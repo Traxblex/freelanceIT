@@ -12,26 +12,26 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
             
-                <div class="flex-shrink-0 flex items-center"> <!-- Ajout de flex items-center pour centrer verticalement le logo -->
+                <div class="flex-shrink-0 flex items-center hover:shadow-xl">
                     <a href="index.php?page=index" class="text-2xl font-bold text-gray-800 hover:text-red-600 transition duration-300">
-                    <img src="public/assets/img/logo_freelanceIT.png" alt="Logo" class="h-12 w-auto mr-2"> <!-- Logo à gauche du texte -->
+                    <img src="public/assets/img/logo_freelanceIT.png" alt="Logo" class="h-12 w-auto mr-2">
                     </a>
                 </div>
 
-                <div class="hidden md:flex space-x-7">
-                    <a href="index.php?page=index" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition">Accueil</a>
-                    <a href="index.php?page=mission" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition">Missions</a>
-                    <a href="index.php?page=freelance" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition">Freelances</a>
+                <div class="hidden md:flex space-x-7 ml-10">
+                    <a href="index.php?page=index" class="text-gray-600 hover:text-blue-600 px-3 py-2 hover:shadow-xl rounded-md text-sm font-medium transition">Accueil</a>
+                    <a href="index.php?page=mission" class="text-gray-600 hover:text-blue-600 px-3 py-2 hover:shadow-xl rounded-md text-sm font-medium transition">Missions</a>
+                    <a href="index.php?page=freelance" class="text-gray-600 hover:text-blue-600 px-3 py-2 hover:shadow-xl rounded-md text-sm font-medium transition">Freelances</a>
                 </div>
                 
                 <div class="hidden md:flex space-x-6">
-                    <a href="index.php?page=connexion" class="flex items-center gap-2 text-black hover:bg-gray-600 hover:text-white px-4 py-2 rounded-md text-sm font-medium transition">
+                    <a href="index.php?page=connexion" class="flex items-center gap-2 text-black hover:bg-gray-600 hover:shadow-xl hover:text-white px-4 py-2 rounded-md text-sm font-medium transition">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
                         </svg>
                         <span>Se connecter</span>
                     </a>
-                    <a href="index.php?page=ajouterMission" class="bg-black text-white hover:bg-blue-700 px-4 py-2 rounded-md text-sm font-medium transition">Poster une mission</a>
+                    <a href="index.php?page=ajouterMission" class="bg-black text-white hover:bg-blue-700 hover:shadow-xl px-4 py-2 rounded-md text-sm font-medium transition">Poster une mission</a>
                 </div>
 
                 <div class="md:hidden flex items-center">

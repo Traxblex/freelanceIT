@@ -1,4 +1,10 @@
 <?php
+if ($user && password_verify($password, $user['mot_de_passe'])) {
+    $_SESSION['user_id'] = $user['id'];
+    $_SESSION['user_role'] = $user['role']; // 'client' ou 'freelance'
+    header("Location: ../../index.php?page=index");
+    exit();
+}
     include ("src/view/layout/header.php");
 
 $page = isset($_GET['page']) ?$_GET['page'] : 'index';
@@ -42,6 +48,12 @@ switch ($page):
         break;
     case"faq":
         include("src/view/apropos/faq.php");
+        break;
+    case "deconnexion":
+        include("src/controller/login/deconnexion.php");
+        break;
+    case "dashboard":
+        include("src/view/accueil/dashboard.php");
         break;
     default :
         include("src/view/accueil/index.php");
