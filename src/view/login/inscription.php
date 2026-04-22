@@ -45,49 +45,43 @@
       </div>
           <div>
               <label for="role-select" class="block text-sm font-medium text-gray-700">Je suis un :</label>
-                  <select name="role" id="role-select" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                  <select name="role" id="role-select" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                       <option value="freelance">Freelance (Je cherche des missions)</option>
                       <option value="client">Entreprise (Je propose des missions)</option>
                   </select>
           </div>
 
-          <div id="champs-client-supplementaires" class="hidden mt-4 space-y-4 p-4 bg-gray-50 border border-gray-200 rounded-lg">
+          <div id="champs-client-supplementaires" class="hidden mt-4 space-y-4 p-4 border border-gray-200 rounded-lg">
               <h3 class="text-sm font-bold text-gray-700">Informations de l'entreprise</h3>
               
               <div>
                   <label class="block text-sm font-medium text-gray-700">Numéro SIRET (14 chiffres)</label>
-                  <input type="number" minlength="14" maxlength="14" name="siret" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                  <input type="number" maxlength="14" name="siret" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
               </div>
               
               <div>
                   <label class="block text-sm font-medium text-gray-700">Adresse de l'entreprise</label>
-                  <input type="text" name="adresse" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                  <input type="text" name="adresse" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
               </div>
               
               <div>
                   <label class="block text-sm font-medium text-gray-700">Description</label>
-                  <textarea name="description" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></textarea>
+                  <textarea name="description" rows="3" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"></textarea>
               </div>
           </div>
 
           <script>
-              // On cible le select et la div à cacher/afficher
               const selectRole = document.getElementById('role-select');
               const divClient = document.getElementById('champs-client-supplementaires');
-
-              // On crée une fonction qui vérifie la valeur du select
               function verifierRole() {
                   if (selectRole.value === 'client') {
-                      divClient.classList.remove('hidden'); // On affiche
+                      divClient.classList.remove('hidden');
                   } else {
-                      divClient.classList.add('hidden'); // On cache
+                      divClient.classList.add('hidden');
                   }
               }
 
-              // On lance la fonction à chaque fois que l'utilisateur change son choix
               selectRole.addEventListener('change', verifierRole);
-
-              // On lance la fonction une fois au chargement de la page (au cas où "client" serait sélectionné par défaut)
               verifierRole();
           </script>
 
