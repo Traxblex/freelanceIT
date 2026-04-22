@@ -13,10 +13,10 @@ CREATE TABLE utilisateurs (
 CREATE TABLE entreprises (
   id int(11) NOT NULL AUTO_INCREMENT,
   id_utilisateur int(11) NOT NULL,
-  raison_sociale varchar(255) NOT NULL,
-  siret varchar(14) DEFAULT NULL,
+  Nom_entreprise varchar(255) NOT NULL,
+  siret varchar(14) NOT NULL,
   description text DEFAULT NULL,
-  adresse varchar(255) DEFAULT NULL,
+  adresse varchar(255) NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (id_utilisateur) REFERENCES utilisateurs(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -38,7 +38,7 @@ CREATE TABLE missions (
   titre varchar(255) NOT NULL,
   description text NOT NULL,
   budget int(11) DEFAULT NULL,
-  statut varchar(50) DEFAULT 'en_attente',
+  statut varchar(50) DEFAULT 'ouvert',
   date_creation date NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (id_entreprise) REFERENCES entreprises(id) ON DELETE CASCADE

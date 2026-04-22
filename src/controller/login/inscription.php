@@ -15,8 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         die("Les mots de passe ne correspondent pas.");
     }
 
-    // 2. Hash du mot de passe (DÉCOMMENTÉ)
-    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    #$hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     // 3. Insérer l'utilisateur avec la date d'inscription
     $stmt = $bdd->prepare("INSERT INTO utilisateurs (nom, prenom, email, mot_de_passe, role, date_inscription) VALUES (:nom, :prenom, :email, :mot_de_passe, :role, :date_inscription)");
@@ -33,14 +32,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $id_nouvel_utilisateur = $bdd->lastInsertId();
 
         // On lui crée instantanément un profil lié selon son rôle
-        if ($role === 'client') {
-            $req_entreprise = $bdd->prepare("INSERT INTO entreprises (id_utilisateur, raison_sociale) VALUES (?, ?)");
-            $req_entreprise->execute([$id_nouvel_utilisateur, "Entreprise de " . $nom]);
-        } elseif ($role === 'freelance') {
-            $req_dev = $bdd->prepare("INSERT INTO profils_dev (id_utilisateur, titre_profil) VALUES (?, ?)");
-            $req_dev->execute([$id_nouvel_utilisateur, "Développeur (Profil à compléter)"]);
-        }
+       if ($role === 'client') {
+            // On récupère les nouvelles données (avec l'opérateur ?? null au cas où elles seraient vides)
+            $siret = $_POST['siret'] ?? null;
+            $adresse = $_POST['adresse'] ?? null;
+            $description = $_POST['description'] ?? null;
+            $raison_sociale = "Entreprise de " . $nom; // Tu pourras rajouter un champ "Nom de l'entreprise" plus tard si tu veux !
 
+            $req_entreprise = $bdd->prepare("INSERT INTO entreprises (id_utilisateur, raison_sociale, siret, adresse, description) VALUES (?, ?, ?, ?, ?)");
+            $req_entreprise->execute([$id_nouvel_utilisateur, $raison_sociale, $siret, $adresse, $description]);
+        }
         // 5. Redirection avec le BON chemin
         header("Location: ../../index.php?page=connexion");
         exit();

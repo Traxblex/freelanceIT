@@ -18,6 +18,9 @@
                         <?= ($mission['statut']) ?>
                     </span>
                 </div>
+                <div class="flex items-start">
+                    <h2><?= ($mission["id_entreprise"]) ?></h2>
+                </div>
                 
                 <p class="mt-3 text-sm text-gray-600 line-clamp-3">
                     <?= ($mission['description']) ?>

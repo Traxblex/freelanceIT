@@ -37,24 +37,59 @@
       </div>
       <div>
         <div class="flex items-center justify-between">
-          <label for="password" class="block text-sm/6 font-medium text-gray-900">Confirmer le mot de passe</label>
+          <label for="password" minlength="8" class="block text-sm/6 font-medium text-gray-900">Confirmer le mot de passe</label>
         </div>
         <div class="mt-2">
           <input id="confirm_password" type="password" name="confirm_password" required autocomplete="current-password" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
         </div>
       </div>
-        <div>
-            <label for="role" class="block text-sm/6 font-medium text-gray-900">Rôle</label>
-            <div class="mt-2">
-                <select id="role" name="role" required class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
-                    <option value="">Sélectionnez un rôle</option>
-                    <option value="freelance">Freelance</option>
-                    <option value="client">Client</option>
-                </select>
-            </div>
-        </div>
+          <div>
+              <label for="role-select" class="block text-sm font-medium text-gray-700">Je suis un :</label>
+                  <select name="role" id="role-select" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                      <option value="freelance">Freelance (Je cherche des missions)</option>
+                      <option value="client">Entreprise (Je propose des missions)</option>
+                  </select>
+          </div>
 
-      
+          <div id="champs-client-supplementaires" class="hidden mt-4 space-y-4 p-4 bg-gray-50 border border-gray-200 rounded-lg">
+              <h3 class="text-sm font-bold text-gray-700">Informations de l'entreprise</h3>
+              
+              <div>
+                  <label class="block text-sm font-medium text-gray-700">Numéro SIRET (14 chiffres)</label>
+                  <input type="number" minlength="14" maxlength="14" name="siret" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+              </div>
+              
+              <div>
+                  <label class="block text-sm font-medium text-gray-700">Adresse de l'entreprise</label>
+                  <input type="text" name="adresse" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+              </div>
+              
+              <div>
+                  <label class="block text-sm font-medium text-gray-700">Description</label>
+                  <textarea name="description" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></textarea>
+              </div>
+          </div>
+
+          <script>
+              // On cible le select et la div à cacher/afficher
+              const selectRole = document.getElementById('role-select');
+              const divClient = document.getElementById('champs-client-supplementaires');
+
+              // On crée une fonction qui vérifie la valeur du select
+              function verifierRole() {
+                  if (selectRole.value === 'client') {
+                      divClient.classList.remove('hidden'); // On affiche
+                  } else {
+                      divClient.classList.add('hidden'); // On cache
+                  }
+              }
+
+              // On lance la fonction à chaque fois que l'utilisateur change son choix
+              selectRole.addEventListener('change', verifierRole);
+
+              // On lance la fonction une fois au chargement de la page (au cas où "client" serait sélectionné par défaut)
+              verifierRole();
+          </script>
 
       <div>
         <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">S'inscrire</button>

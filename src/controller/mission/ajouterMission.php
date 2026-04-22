@@ -13,16 +13,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['user_role'] === 'client'
         $id_ent = $entreprise['id'];
         
         // 2. Insertion de la mission avec le bon id_entreprise
-        $req = $bdd->prepare("INSERT INTO missions (id_entreprise, titre, description, budget, duree, date_creation) VALUES (?, ?, ?, ?, ?, NOW())");
+        $req = $bdd->prepare("INSERT INTO missions (id_entreprise, titre, description, competences_requises, budget, duree, date_creation) VALUES (?, ?, ?, ?, ?, ?, ?, NOW())");
         $req->execute([
             $id_ent, 
             $_POST['titre'], 
-            $_POST['description'], 
+            $_POST['description'],
+            $_POST['competences_requises'],
             $_POST['budget'], 
             $_POST['duree']
         ]);
 
-        header('Location: ../../index.php?page=mission');
+        header('Location: http://localhost/Promo321/info/cours_info_shapeche/freelanceIT/index.php?page=mission');
     } else {
         echo "Erreur : Profil entreprise introuvable.";
     }
