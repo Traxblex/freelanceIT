@@ -8,14 +8,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'];
     $confirm_password = $_POST['confirm_password'];
     $role = $_POST['role']; // "client" ou "freelance" selon ton formulaire
-    $date_inscription = date('Y-m-d'); // OBLIGATOIRE POUR LA BDD
+    $date_inscription = date('Y-m-d H:i:s'); // OBLIGATOIRE POUR LA BDD
 
     // 1. Vérifier que les mots de passe correspondent
     if ($password !== $confirm_password) {
         die("Les mots de passe ne correspondent pas.");
     }
 
-    #$hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     // 3. Insérer l'utilisateur avec la date d'inscription
     $stmt = $bdd->prepare("INSERT INTO utilisateurs (nom, prenom, email, mot_de_passe, role, date_inscription) VALUES (:nom, :prenom, :email, :mot_de_passe, :role, :date_inscription)");
@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $req_entreprise->execute([$id_nouvel_utilisateur, $raison_sociale, $siret, $adresse, $description]);
         }
         // 5. Redirection avec le BON chemin
-        header("Location: ../../index.php?page=connexion");
+        header("Location: http://localhost/promosio/freelanceIT/index.php?page=index");
         exit();
     } else {
         echo "Erreur lors de l'inscription. L'email est peut-être déjà utilisé.";

@@ -8,5 +8,13 @@
       <jdbc-url>jdbc:mysql://localhost:3306/freelanceit</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="MariaDB" uuid="1d80606c-10cf-494c-81cf-e68b2e29061c">
+      <driver-ref>mariadb</driver-ref>
+      <synchronize>true</synchronize>
+      <configured-by-url>true</configured-by-url>
+      <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>
+      <jdbc-url>https://promosio.allamacamara.fr/phpmyadmin/index.php?route=/database/structure&amp;db=freelanceIT</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

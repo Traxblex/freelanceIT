@@ -1,11 +1,5 @@
 <?php
-if ($user && password_verify($password, $user['mot_de_passe'])) {
-    $_SESSION['user_id'] = $user['id'];
-    $_SESSION['user_role'] = $user['role']; // 'client' ou 'freelance'
-    header("Location: ../../index.php?page=index");
-    exit();
-}
-    include ("src/view/layout/header.php");
+include ("src/view/layout/header.php");
 
 $page = isset($_GET['page']) ?$_GET['page'] : 'index';
 

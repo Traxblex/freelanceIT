@@ -3,6 +3,8 @@ USE freelanceIT;
 
 CREATE TABLE utilisateurs (
   id int(11) NOT NULL AUTO_INCREMENT,
+  nom varchar(255) NOT NULL,
+  prenom varchar(255) NOT NULL,
   email varchar(255) NOT NULL,
   mot_de_passe varchar(255) NOT NULL,
   role varchar(50) NOT NULL,
