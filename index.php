@@ -46,9 +46,12 @@ switch ($page):
     case "deconnexion":
         include("src/controller/login/deconnexion.php");
         break;
-    case "dashboard":
-        include("src/view/accueil/dashboard.php");
+    case "profil_public":
+        include("src/controller/freelance/afficher_profil.php");
         break;
+    case "profil":
+        include("src/controller/profil/mon_espace.php");
+    break;
     default :
         include("src/view/accueil/index.php");
         break;

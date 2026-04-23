@@ -23,13 +23,16 @@ CREATE TABLE entreprises (
   FOREIGN KEY (id_utilisateur) REFERENCES utilisateurs(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-CREATE TABLE profils_dev (
+CREATE TABLE profils_freelances (
   id int(11) NOT NULL AUTO_INCREMENT,
   id_utilisateur int(11) NOT NULL,
   titre_profil varchar(255) DEFAULT NULL,
+  description text DEFAULT NULL,
   competences text DEFAULT NULL,
+  localisation varchar(255) DEFAULT NULL,
+  tarif_horaire int(11) DEFAULT NULL,
   cv_url varchar(255) DEFAULT NULL,
-  est_disponible tinyint(1) DEFAULT 1,
+  disponibilite tinyint(1) DEFAULT 1,
   PRIMARY KEY (id),
   FOREIGN KEY (id_utilisateur) REFERENCES utilisateurs(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
