@@ -1,9 +1,9 @@
 <?php
 
     try{
-        $user = "root";
-        $pass = "";
-        $db="freelanceit";
+        $user = "allama_user";
+        $pass = "root2026";
+        $db="freelanceIT";
         $host= "localhost";
         $dsn="mysql:host=$host;dbname=$db";
         $bdd = new PDO($dsn,$user, $pass);
