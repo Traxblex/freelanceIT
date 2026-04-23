@@ -1,3 +1,4 @@
+<title>Accueil</title>
 <div class="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32 lg:py-40">
   
   <div class="absolute inset-0 -z-10">

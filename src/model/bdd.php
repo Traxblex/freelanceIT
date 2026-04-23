@@ -1,8 +1,8 @@
 <?php
 
     try{
-        $user = "allama_user";
-        $pass = "root2026";
+        $user = "root";
+        $pass = "";
         $db="freelanceIT";
         $host= "localhost";
         $dsn="mysql:host=$host;dbname=$db";
