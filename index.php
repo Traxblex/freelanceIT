@@ -1,4 +1,8 @@
 <?php
+session_start();
+
+ob_start();
+
 include ("src/view/layout/header.php");
 
 $page = isset($_GET['page']) ?$_GET['page'] : 'index';
@@ -51,6 +55,9 @@ switch ($page):
         break;
     case "profil":
         include("src/controller/profil/mon_espace.php");
+    break;
+    case "dashboard":
+        include("src/view/accueil/dashboard.php");
     break;
     default :
         include("src/view/accueil/index.php");

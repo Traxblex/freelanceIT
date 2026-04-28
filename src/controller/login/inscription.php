@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'];
     $confirm_password = $_POST['confirm_password'];
     $role = $_POST['role']; // "client" ou "freelance" selon ton formulaire
-    $date_inscription = date('Y-m-d H:i:s'); // OBLIGATOIRE POUR LA BDD
+    $date_inscription = date('Y-m-d'); // OBLIGATOIRE POUR LA BDD
 
     // 1. Vérifier que les mots de passe correspondent
     if ($password !== $confirm_password) {
@@ -33,30 +33,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // On lui crée instantanément un profil lié selon son rôle
        if ($role === 'client') {
-            // On récupère les nouvelles données (avec l'opérateur ?? null au cas où elles seraient vides)
             $siret = $_POST['siret'] ?? null;
             $adresse = $_POST['adresse'] ?? null;
             $description = $_POST['description'] ?? null;
-            $raison_sociale = $_POST['entreprise'] ?? null; // Tu pourras rajouter un champ "Nom de l'entreprise" plus tard si tu veux !
+            $raison_sociale = "Entreprise de " . $nom;
 
+            // L'erreur était ici : il manquait id_utilisateur !
             $req_entreprise = $bdd->prepare("INSERT INTO entreprises (id_utilisateur, raison_sociale, siret, adresse, description) VALUES (?, ?, ?, ?, ?)");
             $req_entreprise->execute([$id_nouvel_utilisateur, $raison_sociale, $siret, $adresse, $description]);
-        } else if ($role === 'freelance') {
-
-            $profil = $_POST['titre_profil'] ?? null;
-
-            $competences = $_POST['competences'] ?? null;
-
-            $cv = $_POST['cv_url'] ?? null;
-            $disponible = $_POST['est_disponible'] ?? null;
-
-            $req_entreprise = $bdd->prepare("INSERT INTO profils_dev(id_utilisateur, titre_profil, competences, cv_url, est_disponible) VALUES (?, ?, ?, ?, ?)");
-
-            $req_entreprise->execute([$id_nouvel_utilisateur, $profil,
-             $competences, $cv, $disponible]);
         }
         // 5. Redirection avec le BON chemin
-        header("Location: http://localhost/promosio/freelanceIT/index.php?page=index");
+        header("Location: index.php?page=dashboard");
         exit();
     } else {
         echo "Erreur lors de l'inscription. L'email est peut-être déjà utilisé.";

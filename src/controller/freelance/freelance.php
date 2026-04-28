@@ -1,21 +1,18 @@
 <?php
-    include('src/model/bdd.php');
+// On inclut la connexion à la BDD
+require_once('src/model/bdd.php');
 
-
+// On récupère les freelances avec leurs informations détaillées
 $req = $bdd->prepare("
-    SELECT u.nom, u.prenom, pf.* FROM utilisateurs u
-    INNER JOIN profils_freelances pf ON u.id = pf.id_utilisateur
-    WHERE u.role = 'freelance' AND pf.disponibilite = 1
+    SELECT u.nom, u.prenom, p.* FROM utilisateurs u 
+    JOIN profils_freelances p ON u.id = p.id_utilisateur 
+    WHERE u.role = 'freelance'
 ");
 $req->execute();
 $freelances = $req->fetchAll(PDO::FETCH_ASSOC);
 
-// On transforme le texte des compétences en tableau, comme pour les missions
-foreach ($freelances as $key => $freelance) {
-    if (!empty($freelance['competences'])) {
-        $freelances[$key]['tableau_competences'] = explode(',', $freelance['competences']);
-    } else {
-        $freelances[$key]['tableau_competences'] = [];
-    }
+// On prépare les compétences pour l'affichage des badges
+foreach ($freelances as $key => $f) {
+    $freelances[$key]['tags'] = !empty($f['competences']) ? explode(',', $f['competences']) : [];
 }
 ?>

@@ -1,40 +1,34 @@
-<title>Connexion</title>
+<?php 
+// On charge la logique en premier
+include 'src/controller/login/connexion.php'; 
+?>
 
-<div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 mt-20">
-  <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-    <img src="public/assets/img/logo_freelanceIT.png" alt="Your Company" class="mx-auto h-10 w-auto" />
-    <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">Se connecter</h2>
-  </div>
+<div class="max-w-md mx-auto mt-24 mb-12 bg-white p-8 border border-gray-200 rounded-xl shadow-sm">
+    <h1 class="text-2xl font-bold text-center mb-6">Connexion</h1>
 
-  <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-    <form action="src/controller/login/connexion.php" method="POST" class="space-y-6">
-      <div>
-        <label for="email" class="block text-sm/6 font-medium text-gray-900">Adresse email</label>
-        <div class="mt-2">
-          <input id="email" type="email" name="email" required autocomplete="email" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
+    <?php if (isset($erreur)): ?>
+        <div class="bg-red-100 text-red-700 p-3 rounded-md mb-4 text-sm text-center">
+            <?= htmlspecialchars($erreur) ?>
         </div>
-      </div>
+    <?php endif; ?>
 
-      <div>
-        <div class="flex items-center justify-between">
-          <label for="password" class="block text-sm/6 font-medium text-gray-900">Mot de passe</label>
-          <div class="text-sm">
-            <a href="index.php?page=oublierMotDePasse" class="font-semibold text-indigo-600 hover:text-indigo-500">Mot de passe oublié?</a>
-          </div>
+    <form action="index.php?page=connexion" method="POST" class="space-y-4">
+        
+        <div>
+            <label for="email" class="block text-sm font-medium text-gray-700">Adresse Email</label>
+            <input type="email" id="email" name="email" required 
+                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border">
         </div>
-        <div class="mt-2">
-          <input id="password" type="password" name="password" required autocomplete="current-password" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
-        </div>
-      </div>
 
-      <div>
-        <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Se connecter</button>
-      </div>
+        <div>
+            <label for="password" class="block text-sm font-medium text-gray-700">Mot de passe</label>
+            <input type="password" id="password" name="password" required 
+                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 border">
+        </div>
+
+        <button type="submit" class="w-full bg-blue-600 text-white font-bold py-2 px-4 rounded-md hover:bg-blue-700 transition">
+            Se connecter
+        </button>
+        
     </form>
-
-    <p class="mt-10 text-center text-sm/6 text-gray-500">
-        Pas de compte?
-      <a href="index.php?page=inscription" class="font-semibold text-indigo-600 hover:text-indigo-500">S'inscrire</a>
-    </p>
-  </div>
 </div>

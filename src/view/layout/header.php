@@ -8,7 +8,7 @@
     
   </head>
 <body>
-    <nav class="bg-white shadow-md fixed w-full z-10 top-0">
+    <nav class="bg-white shadow-md fixe w-full z-10 top-0">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
             
@@ -23,16 +23,27 @@
                     <a href="index.php?page=mission" class="text-gray-600 hover:text-blue-600 px-3 py-2 hover:shadow-xl rounded-md text-sm font-medium transition">Missions</a>
                     <a href="index.php?page=freelance" class="text-gray-600 hover:text-blue-600 px-3 py-2 hover:shadow-xl rounded-md text-sm font-medium transition">Freelances</a>
                 </div>
-                
-                <div class="hidden md:flex space-x-6">
-                    <a href="index.php?page=connexion" class="flex items-center gap-2 text-black hover:bg-gray-600 hover:shadow-xl hover:text-white px-4 py-2 rounded-md text-sm font-medium transition">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
-                        </svg>
-                        <span>Se connecter</span>
-                    </a>
+                <div class="flex items-center gap-4">
+                    <?php if (isset($_SESSION['user_id'])): ?>
+                        
+                        <a href="index.php?page=dashboard" class="text-gray-700 hover:text-blue-600 font-medium">Mon Espace</a>
+                        <a href="index.php?page=deconnexion" class="bg-red-50 text-red-600 px-4 py-2 rounded-md font-medium hover:bg-red-100 transition">
+                            Déconnexion
+                        </a>
+                        
+                    <?php else: ?>
+                        
+                        <a href="index.php?page=connexion" class="text-gray-700 hover:text-blue-600 font-medium">Connexion</a>
+                        <a href="index.php?page=inscription" class="bg-blue-600 text-white px-4 py-2 rounded-md font-medium hover:bg-blue-700 transition">
+                            S'inscrire
+                        </a>
+                        
+                    <?php endif; ?>
+                    <?php if (isset($_SESSION['user_id']) && $_SESSION['user_role'] === 'client'): ?>
                     <a href="index.php?page=ajouterMission" class="bg-black text-white hover:bg-blue-700 hover:shadow-xl px-4 py-2 rounded-md text-sm font-medium transition">Poster une mission</a>
+                    <?php endif; ?>
                 </div>
+    
 
                 <div class="md:hidden flex items-center">
                     <button id="mobile-menu-button" class="text-gray-600 hover:text-blue-600 focus:outline-none">
