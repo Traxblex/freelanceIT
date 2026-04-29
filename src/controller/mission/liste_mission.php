@@ -1,15 +1,15 @@
 <?php
 require_once('src/model/bdd.php');
 
-$req = $bdd->prepare("SELECT * FROM missions ORDER BY date_creation DESC");
+$req = $bdd->prepare("SELECT missions.*, entreprises.Nom_entreprise FROM missions INNER JOIN entreprises ON missions.id_entreprise = entreprises.id ORDER BY missions.date_creation DESC");
 $req->execute();
 $missions = $req->fetchAll(PDO::FETCH_ASSOC);
 
 foreach ($missions as $key => $mission) {
     if (!empty($mission['competences_requises'])) {
-        $missions[$key]['tableau_competences'] = explode(',', $mission['competences_requises']);
+        $missions[$key]['tags'] = explode(',', $mission['competences_requises']);
     } else {
-        $missions[$key]['tableau_competences'] = [];
+        $missions[$key]['tags'] = [];
     }
 $date_creation = new DateTime($mission['date_creation']);
 $maintenant = new DateTime();

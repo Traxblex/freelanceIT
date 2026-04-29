@@ -10,7 +10,7 @@ CREATE TABLE utilisateurs (
   role varchar(50) NOT NULL,
   date_inscription date NOT NULL,
   PRIMARY KEY (id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+)
 
 CREATE TABLE entreprises (
   id int(11) NOT NULL AUTO_INCREMENT,
@@ -21,7 +21,7 @@ CREATE TABLE entreprises (
   adresse varchar(255) NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (id_utilisateur) REFERENCES utilisateurs(id) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+)
 
 CREATE TABLE profils_freelances (
   id int(11) NOT NULL AUTO_INCREMENT,
@@ -35,7 +35,7 @@ CREATE TABLE profils_freelances (
   disponibilite tinyint(1) DEFAULT 1,
   PRIMARY KEY (id),
   FOREIGN KEY (id_utilisateur) REFERENCES utilisateurs(id) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+)
 
 CREATE TABLE missions (
   id int(11) NOT NULL AUTO_INCREMENT,
@@ -45,9 +45,11 @@ CREATE TABLE missions (
   budget int(11) DEFAULT NULL,
   statut varchar(50) DEFAULT 'ouvert',
   date_creation date NOT NULL,
+  competences_requises text DEFAULT NULL,
+  duree varchar(255) NOT NULL default 'indéterminée',
   PRIMARY KEY (id),
   FOREIGN KEY (id_entreprise) REFERENCES entreprises(id) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+)
 
 CREATE TABLE candidatures (
   id int(11) NOT NULL AUTO_INCREMENT,
@@ -59,4 +61,4 @@ CREATE TABLE candidatures (
   PRIMARY KEY (id),
   FOREIGN KEY (id_mission) REFERENCES missions(id) ON DELETE CASCADE,
   FOREIGN KEY (id_utilisateur_dev) REFERENCES utilisateurs(id) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+)

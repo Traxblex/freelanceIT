@@ -13,21 +13,20 @@ $stats = [];
 
 if ($role === 'client') {
     // 1. On récupère l'ID de l'entreprise
-    $stmt = $bdd->prepare("SELECT id FROM entreprises WHERE id_utilisateur = ?");
-    $stmt->execute([$user_id]);
-    $entreprise = $stmt->fetch();
+    $req = $bdd->prepare("SELECT id FROM entreprises WHERE id_utilisateur = ?");
+    $req->execute([$user_id]);
+    $entreprise = $req->fetch();
 
     if ($entreprise) {
-        // 2. On compte le nombre de missions postées par cette entreprise
-        $stmt_count = $bdd->prepare("SELECT COUNT(*) as total FROM missions WHERE id_entreprise = ?");
-        $stmt_count->execute([$entreprise['id']]);
-        $stats['nb_missions'] = $stmt_count->fetch()['total'];
+        $req_count = $bdd->prepare("SELECT COUNT(*) as total FROM missions WHERE id_entreprise = ?");
+        $req_count->execute([$entreprise['id']]);
+        $stats['nb_missions'] = $req_count->fetch()['total'];
     }
 } elseif ($role === 'freelance') {
     // 1. On récupère les infos du profil freelance
-    $stmt = $bdd->prepare("SELECT * FROM profils_freelances WHERE id_utilisateur = ?");
-    $stmt->execute([$user_id]);
-    $profil = $stmt->fetch();
+    $req = $bdd->prepare("SELECT * FROM profils_freelances WHERE id_utilisateur = ?");
+    $req->execute([$user_id]);
+    $profil = $req->fetch();
     
     $stats['disponibilite'] = $profil['disponibilite'] ?? 0;
     $stats['titre'] = $profil['titre_profil'] ?? 'Profil non complété';

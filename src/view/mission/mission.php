@@ -19,16 +19,25 @@
                     </span>
                 </div>
                 <p class="text-sm text-gray-500 mt-1">
-                    <?= ($mission['prenom'] . ' ' . substr($mission['nom'], 0, 1) . '.') ?>
+                    <?= ($mission['Nom_entreprise']) ?>
                 </p>
                 
                 <p class="mt-3 text-sm text-gray-600 line-clamp-3">
                     <?= ($mission['description']) ?>
                 </p>
             </div>
-           <div>
-                <span class="text-sm text-gray-500"><?= ($mission['competences_requises']) ?></span>
-           </div>
+           <div class="flex flex-wrap gap-2 mt-4">
+                    <?php 
+                    $tags = array_slice($mission['tags'], 0, 3);
+                    foreach($tags as $t): ?>
+                        <span class="px-2 py-1 text-xs border border-gray-200 rounded-md text-gray-700 bg-gray-50">
+                            <?= (trim($t)) ?>
+                        </span>
+                    <?php endforeach; 
+                    if(count($mission['tags']) > 3): ?>
+                        <span class="px-2 py-1 text-xs border border-gray-200 rounded-md text-gray-500">+<?= count($mission['tags']) - 3 ?></span>
+                    <?php endif; ?>
+                </div>
 
             <div class="mt-5 pt-4 border-t border-gray-100">
                 

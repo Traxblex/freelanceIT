@@ -1,5 +1,5 @@
 <?php
-require_once '../../model/bdd.php';
+include('../../model/bdd.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nom = $_POST['nom'];
@@ -7,43 +7,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
     $confirm_password = $_POST['confirm_password'];
-    $role = $_POST['role']; // "client" ou "freelance" selon ton formulaire
-    $date_inscription = date('Y-m-d'); // OBLIGATOIRE POUR LA BDD
+    $role = $_POST['role']; 
+    $date_inscription = date('Y-m-d');
 
-    // 1. Vérifier que les mots de passe correspondent
+    
     if ($password !== $confirm_password) {
         die("Les mots de passe ne correspondent pas.");
     }
 
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    // 3. Insérer l'utilisateur avec la date d'inscription
-    $stmt = $bdd->prepare("INSERT INTO utilisateurs (nom, prenom, email, mot_de_passe, role, date_inscription) VALUES (:nom, :prenom, :email, :mot_de_passe, :role, :date_inscription)");
-    $stmt->bindParam(':nom', $nom);
-    $stmt->bindParam(':prenom', $prenom);
-    $stmt->bindParam(':email', $email);
-    $stmt->bindParam(':mot_de_passe', $hashed_password);
-    $stmt->bindParam(':role', $role);
-    $stmt->bindParam(':date_inscription', $date_inscription);
+    
+    $req = $bdd->prepare("INSERT INTO utilisateurs (nom, prenom, email, mot_de_passe, role, date_inscription) VALUES (:nom, :prenom, :email, :mot_de_passe, :role, :date_inscription)");
+    $req->bindParam(':nom', $nom);
+    $req->bindParam(':prenom', $prenom);
+    $req->bindParam(':email', $email);
+    $req->bindParam(':mot_de_passe', $hashed_password);
+    $req->bindParam(':role', $role);
+    $req->bindParam(':date_inscription', $date_inscription);
 
-    if ($stmt->execute()) {
-        // 4. RÉSOLUTION DU PROBLÈME DE CLÉ ÉTRANGÈRE
-        // On récupère l'ID de l'utilisateur qu'on vient juste de créer
+    if ($req->execute()) {
+        
         $id_nouvel_utilisateur = $bdd->lastInsertId();
 
-        // On lui crée instantanément un profil lié selon son rôle
        if ($role === 'client') {
             $siret = $_POST['siret'] ?? null;
             $adresse = $_POST['adresse'] ?? null;
             $description = $_POST['description'] ?? null;
-            $raison_sociale = "Entreprise de " . $nom;
+            $nom_entreprise = $_POST['entreprise'] ?? null;
 
-            // L'erreur était ici : il manquait id_utilisateur !
-            $req_entreprise = $bdd->prepare("INSERT INTO entreprises (id_utilisateur, raison_sociale, siret, adresse, description) VALUES (?, ?, ?, ?, ?)");
-            $req_entreprise->execute([$id_nouvel_utilisateur, $raison_sociale, $siret, $adresse, $description]);
+            $req_entreprise = $bdd->prepare("INSERT INTO entreprises (id_utilisateur, nom_entreprise, siret, adresse, description) VALUES (?, ?, ?, ?, ?)");
+            $req_entreprise->execute([$id_nouvel_utilisateur, $nom_entreprise, $siret, $adresse, $description]);
         }
-        // 5. Redirection avec le BON chemin
-        header("Location: index.php?page=dashboard");
+        header("Location: ../../../index.php?page=dashboard");
         exit();
     } else {
         echo "Erreur lors de l'inscription. L'email est peut-être déjà utilisé.";

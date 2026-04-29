@@ -1,4 +1,7 @@
 <title>Accueil</title>
+<?php
+    include('src/controller/accueil/index.php');
+?>
 <div class="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32 lg:py-40">
   
   <div class="absolute inset-0 -z-10">
@@ -17,22 +20,30 @@
         <a href="index.php?page=freelance" class="text-gray-300 hover:text-blue-600 transition">Découvrir les freelances</a></span></a>
         <a href="index.php?page=mission" class="text-gray-300 hover:text-blue-600 transition">Explorer les missions</a>
       </div>
-      <dl class="mt-16 grid grid-cols-1 gap-8 sm:mt-20 sm:grid-cols-2 lg:grid-cols-4">
+      <dl class="mt-16 grid grid-cols-1 gap-8 sm:mt-20 lg:grid-cols-4">
+        <div class="flex flex-col-reverse gap-1">
+          <dt class="text-base/7 text-gray-300">Utilisateurs total</dt>
+          <dd class="text-4xl font-semibold tracking-tight text-white">
+            <?php echo $total_utilisateurs; ?>
+          </dd>
+        </div>
         <div class="flex flex-col-reverse gap-1">
           <dt class="text-base/7 text-gray-300">Freelance actifs</dt>
-          <dd class="text-4xl font-semibold tracking-tight text-white">10+</dd>
+          <dd class="text-4xl font-semibold tracking-tight text-white">
+            <?php echo $total_freelances; ?>
+          </dd>
         </div>
         <div class="flex flex-col-reverse gap-1">
-          <dt class="text-base/7 text-gray-300">Projets réalisés</dt>
-          <dd class="text-4xl font-semibold tracking-tight text-white">30+</dd>
+          <dt class="text-base/7 text-gray-300">entreprises partenaires</dt>
+          <dd class="text-4xl font-semibold tracking-tight text-white">
+            <?php echo $total_entreprises; ?>
+          </dd>
         </div>
         <div class="flex flex-col-reverse gap-1">
-          <dt class="text-base/7 text-gray-300">Taux de satisfaction</dt>
-          <dd class="text-4xl font-semibold tracking-tight text-white">92%</dd>
-        </div>
-        <div class="flex flex-col-reverse gap-1">
-          <dt class="text-base/7 text-gray-300">Délai de réponse</dt>
-          <dd class="text-4xl font-semibold tracking-tight text-white">24h</dd>
+          <dt class="text-base/7 text-gray-300">Missions disponibles</dt>
+          <dd class="text-4xl font-semibold tracking-tight text-white">
+            <?php echo $total_missions; ?>
+          </dd>
         </div>
       </dl>
     </div>
