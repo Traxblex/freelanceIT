@@ -33,6 +33,7 @@ CREATE TABLE profils_freelances (
   tarif_horaire int(11) DEFAULT NULL,
   cv_url varchar(255) DEFAULT NULL,
   disponibilite tinyint(1) DEFAULT 1,
+  exp VARCHAR(255) DEFAULT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (id_utilisateur) REFERENCES utilisateurs(id) ON DELETE CASCADE
 )

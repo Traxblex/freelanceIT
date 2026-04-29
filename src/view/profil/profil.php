@@ -1,19 +1,87 @@
-<h1 class="">Mon Profil</h1>
-<p>Bienvenue sur votre profil ! Ici, vous pouvez voir et modifier vos informations personnelles.</p>
-<?php
-    include('src/controller/profil/profil.php');
-?>
-<div class="bg-white p-6 rounded-lg shadow-md max-w-3xl mx-auto mt-6">
-    <h2 class="text-xl font-semibold mb-4">Informations personnelles</h2>
-    <p><strong>Nom :</strong> <?= htmlspecialchars($user['nom']) ?></p>
-    <p><strong>Prénom :</strong> <?= htmlspecialchars($user['prenom']) ?></p>
-    <p><strong>Email :</strong> <?= htmlspecialchars($user['email']) ?></p>
-    <p><strong>Rôle :</strong> <?= htmlspecialchars($user['role']) ?></p>
+<?php include 'src/controller/profil/profil.php'; ?>
 
-    <?php if ($profile): ?>
-        <h3 class="text-lg font-semibold mt-6 mb-2">Informations de l'entreprise</h3>
-        <p><strong>Nom de l'entreprise :</strong> <?= htmlspecialchars($profile['nom_entreprise']) ?></p>
-        <p><strong>SIRET :</strong> <?= htmlspecialchars($profile['siret']) ?></p>
-        <p><strong>Adresse :</strong> <?= htmlspecialchars($profile['adresse']) ?></p>
-        <p><strong>Description :</strong> <?= nl2br(htmlspecialchars($profile['description'])) ?></p>
+<div class="max-w-4xl mx-auto px-6 lg:px-8 mt-24 mb-12">
+    
+    <div class="flex items-center justify-between mb-8">
+        <h1 class="text-3xl font-bold text-gray-900">Mon Profil Technique</h1>
+        <a href="index.php?page=dashboard" class="text-blue-600 hover:text-blue-800 font-medium text-sm">
+            &larr; Retour au Dashboard
+        </a>
+    </div>
+
+    <?php if ($message_succes): ?>
+        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-6">
+            <?= ($message_succes) ?>
+        </div>
     <?php endif; ?>
+
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-8">
+        
+        <form action="index.php?page=profil" method="POST" class="space-y-6">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Titre de ton profil (Métier)</label>
+                    <input type="text" name="titre_profil" value="<?= ($profil['titre_profil']) ?>" 
+                           placeholder="Ex: Développeur Full-Stack PHP"
+                           class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Localisation (ou Remote)</label>
+                    <input type="text" name="localisation" value="<?= ($profil['localisation']) ?>" 
+                           placeholder="Ex: Paris, France ou 100% Remote"
+                           class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Tarif Horaire (€ / heure)</label>
+                    <input type="number" name="tarif_horaire" value="<?= ($profil['tarif_horaire']) ?>" 
+                           placeholder="Ex: 50"
+                           class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
+                </div>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Expérience (années)</label>
+                <input type="number" name="exp" value="<?= ($profil['exp']) ?>" 
+                       placeholder="Ex: 5"
+                       class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Compétences (Séparées par des virgules)</label>
+                <input type="text" name="competences" value="<?= ($profil['competences']) ?>" 
+                       placeholder="Ex: HTML, CSS, PHP, Laravel, React"
+                       class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
+                <p class="text-xs text-gray-500 mt-1">Ces mots-clés s'afficheront sous forme de badges sur ta carte.</p>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Description</label>
+                <textarea name="description" rows="5" 
+                          placeholder="Présente-toi, parle de tes expériences et de ce que tu recherches..."
+                          class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border"><?= ($profil['description']) ?></textarea>
+            </div>
+
+            <div class="flex items-start bg-gray-50 p-4 rounded-lg border border-gray-200">
+                <div class="flex items-center h-5">
+                    <input type="checkbox" name="disponibilite" id="disponibilite" value="1" 
+                           <?= $profil['disponibilite'] == 1 ? 'checked' : '' ?>
+                           class="w-5 h-5 text-blue-600 bg-white border-gray-300 rounded focus:ring-blue-500 cursor-pointer">
+                </div>
+                <div class="ml-3 text-sm">
+                    <label for="disponibilite" class="font-bold text-gray-800 cursor-pointer">Je suis actuellement disponible</label>
+                    <p class="text-gray-500">Décoche cette case si tu es déjà en mission pour ne plus apparaître dans le catalogue public.</p>
+                </div>
+            </div>
+
+            <div class="pt-4 border-t border-gray-100 flex justify-end">
+                <button type="submit" class="bg-blue-600 text-white font-bold py-3 px-8 rounded-md hover:bg-blue-700 transition shadow-sm">
+                    Sauvegarder mon profil
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+</div>

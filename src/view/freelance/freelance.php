@@ -14,7 +14,7 @@
                         <?= ($f['titre_profil'] ?? 'Développeur') ?>
                     </h2>
                     <span class="px-3 py-1 text-xs font-semibold text-green-700 bg-green-100 rounded-full">
-                        <?= ($f['est_disponible'] == 1) ? 'Disponible' : 'Occupé' ?>
+                        <?= ($f['disponibilite'] == 1) ? 'Disponible' : 'Occupé' ?>
                     </span>
                 </div>
                 
@@ -42,19 +42,15 @@
 
             <div class="mt-6 pt-6 border-t border-gray-50 grid grid-cols-2 gap-4">
                 <div class="flex items-center gap-2 text-sm text-gray-600">
-                    <span>💰</span> 
-                    <span class="font-semibold text-gray-900"><?= $f['tjm'] ?? '450' ?>€ / jour</span>
+                    <span class="font-semibold text-gray-900"><?= $f['tarif_horaire'] ?? '100' ?>€ / jour</span>
                 </div>
                 <div class="flex items-center gap-2 text-sm text-gray-600">
-                    <span>📍</span> 
                     <span><?= ($f['localisation'] ?? 'Remote') ?></span>
                 </div>
                 <div class="flex items-center gap-2 text-sm text-gray-600">
-                    <span>⏱️</span> 
-                    <span>5 ans exp.</span>
+                    <span><?= ($f['exp'] ?? '0') ?> ans d'exp</span>
                 </div>
                 <div class="flex items-center gap-2 text-sm text-gray-600">
-                    <span>⭐</span> 
                     <span>4.9 (12 avis)</span>
                 </div>
             </div>

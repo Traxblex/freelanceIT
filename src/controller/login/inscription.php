@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $req->bindParam(':date_inscription', $date_inscription);
 
     if ($req->execute()) {
-        
+        $message_succes = "Inscription réussie !";
         $id_nouvel_utilisateur = $bdd->lastInsertId();
 
        if ($role === 'client') {
@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header("Location: ../../../index.php?page=dashboard");
         exit();
     } else {
-        echo "Erreur lors de l'inscription. L'email est peut-être déjà utilisé.";
+        $message_erreur = "Erreur lors de l'inscription. L'email est peut-être déjà utilisé.";
     }
 }
 ?>
