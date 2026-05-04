@@ -1,5 +1,5 @@
 <?php
-require_once '../../model/bdd.php';
+require_once 'src/model/bdd.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
 
@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $req->execute();
 
         // Envoyer un email avec le lien de réinitialisation (vous devez configurer votre serveur SMTP)
-        $reset_link = "http://votre-domaine.com/index.php?page=reinitialiserMotDePasse&token=$token";
+        $reset_link = "http://promosio.allamacamara.fr/index.php?page=reinitialiserMotDePasse&token=$token";
         mail($email, "Réinitialisation de mot de passe", "Cliquez sur ce lien pour réinitialiser votre mot de passe: $reset_link");
 
         echo "Un email de réinitialisation a été envoyé à votre adresse.";

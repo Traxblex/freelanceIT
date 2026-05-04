@@ -1,5 +1,5 @@
 <?php
-include('../../model/bdd.php');
+require_once('src/model/bdd.php');
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['user_role'] === 'client') {
@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['user_role'] === 'client'
             $_POST['budget'], 
             $_POST['duree']
         ]);
-        header('Location: http://localhost/Promo321/info/cours_info_shapeche/freelanceIT/index.php?page=mission');
+        header('Location: index.php?page=mission');
     } else {
         echo "Erreur : Profil entreprise introuvable.";
     }

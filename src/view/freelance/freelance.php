@@ -7,16 +7,26 @@
         
         <?php foreach ($freelances as $f): ?>
         <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-shadow flex flex-col justify-between">
-            
             <div>
-                <div class="flex justify-between items-start">
-                    <h2 class="text-xl font-bold text-gray-900 leading-tight">
-                        <?= ($f['titre_profil'] ?? 'Développeur') ?>
-                    </h2>
-                    <span class="px-3 py-1 text-xs font-semibold text-green-700 bg-green-100 rounded-full">
-                        <?= ($f['disponibilite'] == 1) ? 'Disponible' : 'Occupé' ?>
-                    </span>
-                </div>
+                <?php if (!empty($f['photo'])): ?>
+                    <img src="public/uploads/<?= ($f['photo']) ?>" 
+                         alt="Photo de <?= ($f['prenom'] . ' ' . $f['nom']) ?>" 
+                         class="h-16 w-16 rounded-full object-cover border-2 border-gray-300 shadow-sm">
+                <?php else: ?>
+                    <div class="h-16 w-16 rounded-full bg-gray-200 border-2 border-gray-300 shadow-sm flex items-center justify-center text-xl text-gray-400">
+                        <?= strtoupper(substr($f['prenom'], 0, 1) . substr($f['nom'], 0, 1)) ?>
+                    </div>
+                <?php endif; ?>
+            
+                <div>
+                    <div class="flex justify-between items-start">
+                        <h2 class="text-xl font-bold text-gray-900 leading-tight">
+                            <?= ($f['titre_profil'] ?? 'Développeur') ?>
+                        </h2>
+                        <span class="px-3 py-1 text-xs font-semibold text-green-700 bg-green-100 rounded-full">
+                            <?= ($f['disponibilite'] == 1) ? 'Disponible' : 'Occupé' ?>
+                        </span>
+                    </div>
                 
                 <p class="text-sm text-gray-500 mt-1">
                     <?= ($f['prenom'] . ' ' . substr($f['nom'], 0, 1) . '.') ?>
@@ -63,4 +73,5 @@
         <?php endforeach; ?>
 
     </div>
+</div>
 </div>

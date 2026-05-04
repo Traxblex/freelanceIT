@@ -14,11 +14,24 @@
             <?= ($message_succes) ?>
         </div>
     <?php endif; ?>
-
+    <div class="flex flex-col items-center mb-8">
+    <?php if (!empty($profil['photo'])): ?>
+        <!-- S'il a une photo, on l'affiche -->
+        <img src="public/uploads/<?= htmlspecialchars($profil['photo']) ?>" 
+             alt="Ma photo de profil" 
+             class="h-32 w-32 rounded-full object-cover border-4 border-white shadow-lg">
+    <?php else: ?>
+        <!-- S'il n'a pas de photo, on affiche un rond gris avec une icône -->
+    <div class="h-32 w-32 rounded-full bg-gray-200 border-4 border-white shadow-lg flex items-center justify-center text-4xl text-gray-400">
+        
+            </div>
+        <?php endif; ?>
+        <p class="mt-4 text-sm text-gray-500">Aperçu de ta photo de profil</p>
+    </div>
     <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-8">
         
-        <form action="index.php?page=profil" method="POST" class="space-y-6">
-            
+        <form action="index.php?page=profil" method="POST" class="space-y-6" enctype="multipart/form-data">
+
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1">Titre de ton profil (Métier)</label>
@@ -26,11 +39,17 @@
                            placeholder="Ex: Développeur Full-Stack PHP"
                            class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
                 </div>
+                <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Photo de profil</label>
+                    <input type="file" name="image_profil" accept="image/png, image/jpeg, image/webp"
+                        class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 cursor-pointer">
+                    <p class="text-xs text-gray-500 mt-2">Formats acceptés : JPG, PNG, WEBP. (Max 2 Mo)</p>
+                </div>
 
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1">Localisation (ou Remote)</label>
                     <input type="text" name="localisation" value="<?= ($profil['localisation']) ?>" 
-                           placeholder="Ex: Paris, France ou 100% Remote"
+                           placeholder="Ex: Paris, France ou 100% Distanciel"
                            class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
                 </div>
 
@@ -53,7 +72,7 @@
                 <input type="text" name="competences" value="<?= ($profil['competences']) ?>" 
                        placeholder="Ex: HTML, CSS, PHP, Laravel, React"
                        class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
-                <p class="text-xs text-gray-500 mt-1">Ces mots-clés s'afficheront sous forme de badges sur ta carte.</p>
+                
             </div>
 
             <div>
@@ -70,7 +89,7 @@
                            class="w-5 h-5 text-blue-600 bg-white border-gray-300 rounded focus:ring-blue-500 cursor-pointer">
                 </div>
                 <div class="ml-3 text-sm">
-                    <label for="disponibilite" class="font-bold text-gray-800 cursor-pointer">Je suis actuellement disponible</label>
+                    <label for="disponibilite" class="font-bold text-gray-800 cursor-pointer">Je suis disponible</label>
                     <p class="text-gray-500">Décoche cette case si tu es déjà en mission pour ne plus apparaître dans le catalogue public.</p>
                 </div>
             </div>

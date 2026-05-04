@@ -1,5 +1,5 @@
 <?php
-include('../../model/bdd.php');
+require_once 'src/model/bdd.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nom = $_POST['nom'];
@@ -36,10 +36,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $description = $_POST['description'] ?? null;
             $nom_entreprise = $_POST['entreprise'] ?? null;
 
-            $req_entreprise = $bdd->prepare("INSERT INTO entreprises (id_utilisateur, nom_entreprise, siret, adresse, description) VALUES (?, ?, ?, ?, ?)");
+            $req_entreprise = $bdd->prepare("INSERT INTO entreprises (id_utilisateur, Nom_entreprise, siret, adresse, description) VALUES (?, ?, ?, ?, ?)");
             $req_entreprise->execute([$id_nouvel_utilisateur, $nom_entreprise, $siret, $adresse, $description]);
         }
-        header("Location: ../../../index.php?page=dashboard");
+        header("Location: index.php?page=dashboard");
         exit();
     } else {
         $message_erreur = "Erreur lors de l'inscription. L'email est peut-être déjà utilisé.";

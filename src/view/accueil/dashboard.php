@@ -23,13 +23,11 @@
                 </div>
 
                 <a href="index.php?page=ajouterMission" class="group p-6 bg-blue-600 rounded-xl hover:bg-blue-700 transition">
-                    <div class="text-white text-2xl mb-2">🚀</div>
                     <h3 class="font-bold text-white text-lg">Publier une mission</h3>
                     <p class="text-blue-100 text-sm mt-1">Trouvez un expert pour votre projet.</p>
                 </a>
 
                 <a href="index.php?page=mission" class="p-6 bg-white border border-gray-200 rounded-xl hover:border-blue-300 transition">
-                    <div class="text-2xl mb-2">📋</div>
                     <h3 class="font-bold text-gray-900 text-lg">Gérer mes offres</h3>
                     <p class="text-gray-500 text-sm mt-1">Voir les candidatures reçues.</p>
                 </a>
@@ -47,13 +45,11 @@
                 </div>
 
                 <a href="index.php?page=profil" class="p-6 bg-green-600 rounded-xl hover:bg-green-700 transition">
-                    <div class="text-white text-2xl mb-2"></div>
                     <h3 class="font-bold text-white text-lg">Mon Profil Public</h3>
                     <p class="text-green-100 text-sm mt-1">Mettre à jour mes compétences.</p>
                 </a>
 
                 <a href="index.php?page=mission" class="p-6 bg-white border border-gray-200 rounded-xl hover:border-green-300 transition">
-                    <div class="text-2xl mb-2">🔎</div>
                     <h3 class="font-bold text-gray-900 text-lg">Trouver une mission</h3>
                     <p class="text-gray-500 text-sm mt-1">Parcourir les opportunités IT.</p>
                 </a>

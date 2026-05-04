@@ -1,22 +1,31 @@
 <title>inscription</title>
+<?php 
+include 'src/controller/login/inscription.php'; 
+?>
+
 <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 mt-20">
   <div class="sm:mx-auto sm:w-full sm:max-w-sm">
     <img src="public/assets/img/logo_freelanceIT.png" alt="Your Company" class="mx-auto h-10 w-auto" />
     <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">S'inscrire</h2>
   </div>
-  <?php if ($message_succes): ?>
-        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-6">
+<?php if (isset($message_succes)): ?>
+          <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-6">
             <?= ($message_succes) ?>
-        </div>
-    <?php endif; ?>
-    <?php if ($message_erreur): ?>
-        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-6">
+          </div>
+  <?php endif; ?>
+  <?php if (isset($message_erreur)): ?>
+          <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-6">
             <?= ($message_erreur) ?>
-        </div>
-    <?php endif; ?>
+          </div>
+  <?php endif; ?>
+  <?php if (isset($message_password)): ?>
+          <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-6">
+            <?= ($message_password) ?>
+          </div>
+  <?php endif; ?>
 
   <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-    <form  id="form-inscription" action="src/controller/login/inscription.php" method="POST" class="space-y-6" onsubmit="return checkform()">
+<form id="form-inscription" action="index.php?page=inscription" method="POST" class="space-y-6" onsubmit="return checkform()">
         <div>
             <label for="nom" class="block text-sm/6 font-medium text-gray-900">Nom</label>
             <div class="mt-2">

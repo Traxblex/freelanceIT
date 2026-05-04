@@ -5,12 +5,12 @@ CREATE TABLE utilisateurs (
   id int(11) NOT NULL AUTO_INCREMENT,
   nom varchar(255) NOT NULL,
   prenom varchar(255) NOT NULL,
-  email varchar(255) NOT NULL,
+  email varchar(255) NOT NULL unique,
   mot_de_passe varchar(255) NOT NULL,
   role varchar(50) NOT NULL,
   date_inscription date NOT NULL,
   PRIMARY KEY (id)
-)
+);
 
 CREATE TABLE entreprises (
   id int(11) NOT NULL AUTO_INCREMENT,
@@ -21,7 +21,7 @@ CREATE TABLE entreprises (
   adresse varchar(255) NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (id_utilisateur) REFERENCES utilisateurs(id) ON DELETE CASCADE
-)
+);
 
 CREATE TABLE profils_freelances (
   id int(11) NOT NULL AUTO_INCREMENT,
@@ -34,9 +34,10 @@ CREATE TABLE profils_freelances (
   cv_url varchar(255) DEFAULT NULL,
   disponibilite tinyint(1) DEFAULT 1,
   exp VARCHAR(255) DEFAULT NULL,
+  photo varchar(255) DEFAULT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (id_utilisateur) REFERENCES utilisateurs(id) ON DELETE CASCADE
-)
+);
 
 CREATE TABLE missions (
   id int(11) NOT NULL AUTO_INCREMENT,
@@ -50,7 +51,7 @@ CREATE TABLE missions (
   duree varchar(255) NOT NULL default 'indéterminée',
   PRIMARY KEY (id),
   FOREIGN KEY (id_entreprise) REFERENCES entreprises(id) ON DELETE CASCADE
-)
+);
 
 CREATE TABLE candidatures (
   id int(11) NOT NULL AUTO_INCREMENT,
