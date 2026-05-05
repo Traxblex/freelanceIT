@@ -12,7 +12,7 @@
 
     <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
         <h2 class="text-2xl font-semibold text-gray-800 mb-6">
-            Ravi de vous revoir, <?= ($_SESSION['prenom'] ?? 'Utilisateur') ?> !
+            Ravi de vous revoir, <?= ($_SESSION['nom'] ?? 'Utilisateur') ?> !
         </h2>
 
         <?php if ($role === 'client'): ?>

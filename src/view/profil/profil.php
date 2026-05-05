@@ -15,19 +15,27 @@
         </div>
     <?php endif; ?>
     <div class="flex flex-col items-center mb-8">
-    <?php if (!empty($profil['photo'])): ?>
-        <!-- S'il a une photo, on l'affiche -->
-        <img src="public/uploads/<?= htmlspecialchars($profil['photo']) ?>" 
-             alt="Ma photo de profil" 
-             class="h-32 w-32 rounded-full object-cover border-4 border-white shadow-lg">
-    <?php else: ?>
-        <!-- S'il n'a pas de photo, on affiche un rond gris avec une icône -->
-    <div class="h-32 w-32 rounded-full bg-gray-200 border-4 border-white shadow-lg flex items-center justify-center text-4xl text-gray-400">
-        
+        <?php if (!empty($profil['photo'])): ?>
+            <img src="public/uploads/<?= htmlspecialchars($profil['photo']) ?>" 
+                alt="Ma photo de profil" 
+                class="h-32 w-32 rounded-full object-cover border-4 border-white shadow-lg mb-3">
+            
+            <!-- NOUVEAU : La case à cocher pour supprimer -->
+            <div class="flex items-center space-x-2">
+                <input type="checkbox" id="supprimer_photo" name="supprimer_photo" value="1" class="rounded text-blue-600 focus:ring-blue-500">
+                <label for="supprimer_photo" class="text-sm text-red-600 font-medium cursor-pointer hover:text-red-800">
+                    Supprimer ma photo actuelle
+                </label>
             </div>
+
+        <?php else: ?>
+            <div class="h-32 w-32 rounded-full bg-gray-200 border-4 border-white shadow-lg flex items-center justify-center text-4xl text-gray-400">
+                👤
+            </div>
+            <p class="mt-4 text-sm text-gray-500">Aucune photo de profil</p>
         <?php endif; ?>
-        <p class="mt-4 text-sm text-gray-500">Aperçu de ta photo de profil</p>
     </div>
+    
     <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-8">
         
         <form action="index.php?page=profil" method="POST" class="space-y-6" enctype="multipart/form-data">

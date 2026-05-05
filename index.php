@@ -29,8 +29,8 @@ switch ($page):
     case "ajouterMission":
         include("src/view/mission/ajouterMission.php");
         break;
-    case "ajouterFreelance":
-        include("src/view/freelance/ajouterFreelance.php");
+    case "controller_ajouterMission":
+        include("src/controller/mission/ajouterMission.php");
         break;
     case "apropos":
         include("src/view/apropos/apropos.php");

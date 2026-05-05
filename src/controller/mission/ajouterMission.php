@@ -1,6 +1,5 @@
 <?php
-require_once('src/model/bdd.php');
-session_start();
+require_once 'src/model/bdd.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['user_role'] === 'client') {
     $req = $bdd->prepare("SELECT id FROM entreprises WHERE id_utilisateur = ?");

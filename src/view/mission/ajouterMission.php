@@ -1,4 +1,4 @@
-<form action="src/controller/mission/ajouterMission.php" method="POST">
+<form action="index.php?page=controller_ajouterMission" method="POST">
     <div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-md mt-24 mb-10">
         <div>
             <h1 class="text-2xl font-bold text-gray-800 mb-4">Ajouter une nouvelle mission</h1>

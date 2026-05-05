@@ -22,6 +22,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $req_check->execute([$user_id]);
     $profil_existe = $req_check->fetch();
 
+    // --- GESTION DE LA SUPPRESSION DE LA PHOTO ---
+    if (isset($_POST['supprimer_photo']) && $_POST['supprimer_photo'] == '1') {
+        
+        // 1. On va chercher le nom de la photo actuelle dans la BDD
+        $req_ancienne = $bdd->prepare("SELECT photo FROM profils_freelances WHERE id_utilisateur = ?");
+        $req_ancienne->execute([$user_id]);
+        $ancienne_photo = $req_ancienne->fetchColumn();
+
+        // 2. Si on a trouvé un nom de fichier, on détruit le vrai fichier sur le disque dur
+        if (!empty($ancienne_photo) && file_exists('public/uploads/' . $ancienne_photo)) {
+            unlink('public/uploads/' . $ancienne_photo); // ⚠️ unlink() est la fonction PHP qui supprime un fichier
+        }
+
+        // 3. On vide la case 'photo' dans la base de données
+        $req_suppr = $bdd->prepare("UPDATE profils_freelances SET photo = NULL WHERE id_utilisateur = ?");
+        $req_suppr->execute([$user_id]);
+        
+        $message_succes = "Ta photo a bien été supprimée !";
+    }
+
     if ($profil_existe) {
         $req = $bdd->prepare("UPDATE profils_freelances SET titre_profil = ?, description = ?, competences = ?, localisation = ?, tarif_horaire = ?, disponibilite = ?, exp = ? WHERE id_utilisateur = ?");
         $req->execute([$titre_profil, $description, $competences, $localisation, $tarif_horaire, $disponibilite, $exp, $user_id]);
