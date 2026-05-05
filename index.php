@@ -14,6 +14,9 @@ switch ($page):
     case"mission":
         include("src/view/mission/mission.php");
         break;
+    case "detailMission":
+        include("src/view/mission/detailMission.php");
+        break;
     case "freelance":
         include("src/view/freelance/freelance.php");
         break;

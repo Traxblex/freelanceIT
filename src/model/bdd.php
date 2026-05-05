@@ -1,5 +1,4 @@
 <?php
-
     try{
         $user = "root";
         $pass = "";

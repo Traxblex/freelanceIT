@@ -2,11 +2,11 @@
     include ("src/controller/mission/liste_mission.php");
 ?>
 
-<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 px-6 lg:px-8 mt-24 mb-10 max-w-7xl mx-auto">
+<main class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 px-6 lg:px-8 mt-24 mb-10 max-w-7xl mx-auto">
     
     <?php foreach ($missions as $mission): ?>
         
-    <a href="#" class="block h-full">
+    <a href="index.php?page=detailMission&id=<?= $mission['id'] ?>" class="block">
         <div class="w-full h-full px-5 py-4 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow flex flex-col justify-between border border-gray-100">
             
             <div>
@@ -80,4 +80,4 @@
 
     <?php endforeach; ?>
 
-</div>
+</main>
