@@ -4,8 +4,14 @@
                 <h1 class="text-xl font-semibold tracking-tight  md:mx-3 xl:text-2xl ">Prêt à démarrer votre prochain projet </h1>
                 
                 <div class="mt-6 md:mx-3 shrink-0 md:mt-0 md:w-auto">
-                    <a href="index.php?page=ajouterMission" class="inline-flex items-center hover:shadow-xl justify-center w-full px-4 py-2 text-sm text-white duration-300 bg-gray-800 rounded-lg gap-x-3 hover:bg-gray-700 focus:ring focus:ring-gray-300 focus:ring-opacity-80">
-                        <span>Commencer</span>
+                    <?php if (isset($_SESSION['user_id']) && $_SESSION['user_role'] === 'client'): ?>
+                        <a href="index.php?page=ajouterMission" class="inline-flex items-center hover:shadow-xl justify-center w-full px-4 py-2 text-sm text-white duration-300 bg-gray-800 rounded-lg gap-x-3 hover:bg-gray-700 focus:ring focus:ring-gray-300 focus:ring-opacity-80">
+                    <?php elseif (isset($_SESSION['user_id']) && $_SESSION['user_role'] === 'freelance'): ?>
+                        <a href="index.php?page=dashboard" class="inline-flex items-center hover:shadow-xl justify-center w-full px-4 py-2 text-sm text-white duration-300 bg-gray-800 rounded-lg gap-x-3 hover:bg-gray-700 focus:ring focus:ring-gray-300 focus:ring-opacity-80">
+                    <?php else: ?>
+                        <a href="index.php?page=inscription" class="inline-flex items-center hover:shadow-xl justify-center w-full px-4 py-2 text-sm text-white duration-300 bg-gray-800 rounded-lg gap-x-3 hover:bg-gray-700 focus:ring focus:ring-gray-300 focus:ring-opacity-80">
+                    <?php endif; ?>
+                    <span>Commencer</span>
 
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />

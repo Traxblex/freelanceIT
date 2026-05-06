@@ -1,25 +1,30 @@
 <?php
-    include 'src/model/bdd.php';
+require_once 'src/model/bdd.php';
 
-    $req = $bdd->prepare("SELECT missions.*, entreprises.Nom_entreprise, profils_freelances.titre_profil, profils_freelances.description FROM missions INNER JOIN entreprises ON missions.id_entreprise = entreprises.id LEFT JOIN profils_freelances ON missions.id_entreprise = profils_freelances.id_utilisateur WHERE missions.id = ?");
-    $req->execute([$_GET['id']]);
-    $mission = $req->fetch(PDO::FETCH_ASSOC);
+if (!isset($_GET['id']) || empty($_GET['id'])) {
+    header('Location: index.php?page=mission');
+    exit();
+}
 
-    foreach ($missions as $key => $mission) {
-        if (!empty($mission['competences_requises'])) {
-            $missions[$key]['tags'] = explode(',', $mission['competences_requises']);
-        } else {
-            $missions[$key]['tags'] = [];
-        }
-    }
-    if ($mission) {
-        if (!empty($mission['competences_requises'])) {
-            $mission['tags'] = explode(',', $mission['competences_requises']);
-        } else {
-            $mission['tags'] = [];
-        }
-    } else {
-        echo "Mission non trouvée.";
-        exit();
-    }
 
+$id_mission = (int) $_GET['id'];
+$req = $bdd->prepare("SELECT missions.*, entreprises.nom_entreprise, entreprises.description AS description_entreprise FROM missions JOIN entreprises ON missions.id_entreprise = entreprises.id WHERE missions.id = ?");
+$req->execute([$id_mission]);
+$mission = $req->fetch(PDO::FETCH_ASSOC);
+
+$date_creation = new DateTime($mission['date_creation']);
+$maintenant = new DateTime();
+$difference = $maintenant->diff($date_creation);
+
+if ($difference->d == 0) {
+    $mission['temps_ecoule'] = "Aujourd'hui";
+} elseif ($difference->d == 1) {
+    $mission['temps_ecoule'] = "Hier";
+} else {
+    $mission['temps_ecoule'] = "Il y a " . $difference->d . " jours";
+}
+
+if (!$mission) {
+    header('Location: index.php?page=mission');
+    exit();
+}

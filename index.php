@@ -54,7 +54,7 @@ switch ($page):
         include("src/controller/login/deconnexion.php");
         break;
     case "profil_public":
-        include("src/controller/freelance/afficher_profil.php");
+        include("src/view/freelance/afficher_profil.php");
         break;
     case "profil":
         include("src/controller/profil/mon_espace.php");
