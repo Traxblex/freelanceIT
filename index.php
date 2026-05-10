@@ -59,6 +59,9 @@ switch ($page):
     case "profil":
         include("src/controller/profil/mon_espace.php");
     break;
+    case "candidatures":
+        include("src/view/candidatures/candidatures.php");
+        break;
     case "dashboard":
         include("src/view/accueil/dashboard.php");
     break;

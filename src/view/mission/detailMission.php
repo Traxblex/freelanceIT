@@ -4,13 +4,11 @@
 ?>
 <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 bg-gray-50 min-h-screen">
     
-    <!-- Lien retour -->
     <a href="index.php?page=mission" class="inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 mb-6 transition-colors">
         <svg class="mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
         Retour aux missions
     </a>
 
-    <!-- En-tête de la mission -->
     <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
         <div>
             <div class="flex items-center gap-3">

@@ -1,7 +1,6 @@
 <?php
 require_once 'src/model/bdd.php';
 
-// Sécurité : on vérifie que l'utilisateur est connecté
 if (!isset($_SESSION['user_id'])) {
     header('Location: index.php?page=connexion');
     exit();
@@ -9,13 +8,17 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 $role = $_SESSION['user_role'];
+
+$req_user = $bdd->prepare("SELECT prenom FROM utilisateurs WHERE id = ?");
+$req_user->execute([$user_id]);
+$user = $req_user->fetch(PDO::FETCH_ASSOC);
+
 $stats = [];
 
 if ($role === 'client') {
-    // 1. On récupère l'ID de l'entreprise
-    $req = $bdd->prepare("SELECT id FROM entreprises WHERE id_utilisateur = ?");
+    $req = $bdd->prepare("SELECT id, Nom_entreprise, SIRET, description, adresse FROM entreprises WHERE id_utilisateur = ?");
     $req->execute([$user_id]);
-    $entreprise = $req->fetch();
+    $entreprise = $req->fetch(PDO::FETCH_ASSOC);
 
     if ($entreprise) {
         $req_count = $bdd->prepare("SELECT COUNT(*) as total FROM missions WHERE id_entreprise = ?");
@@ -23,10 +26,9 @@ if ($role === 'client') {
         $stats['nb_missions'] = $req_count->fetch()['total'];
     }
 } elseif ($role === 'freelance') {
-    // 1. On récupère les infos du profil freelance
     $req = $bdd->prepare("SELECT * FROM profils_freelances WHERE id_utilisateur = ?");
     $req->execute([$user_id]);
-    $profil = $req->fetch();
+    $profil = $req->fetch(PDO::FETCH_ASSOC);
     
     $stats['disponibilite'] = $profil['disponibilite'] ?? 0;
     $stats['titre'] = $profil['titre_profil'] ?? 'Profil non complété';
