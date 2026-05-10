@@ -12,6 +12,10 @@ $req = $bdd->prepare("SELECT missions.*, entreprises.nom_entreprise, entreprises
 $req->execute([$id_mission]);
 $mission = $req->fetch(PDO::FETCH_ASSOC);
 
+$req_count = $bdd->prepare("SELECT COUNT(*) as total FROM missions WHERE id_entreprise = ?");
+    $req_count->execute([$mission['id_entreprise']]);
+    $stats['nb_missions'] = $req_count->fetch()['total'];
+
 $date_creation = new DateTime($mission['date_creation']);
 $maintenant = new DateTime();
 $difference = $maintenant->diff($date_creation);

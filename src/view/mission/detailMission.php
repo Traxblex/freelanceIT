@@ -64,7 +64,7 @@
             <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
                 <div class="p-6 md:p-8">
                     <h2 class="text-lg font-bold text-gray-900 mb-6">Soumettre une proposition</h2>
-                    <form action="#" method="POST" class="space-y-6">
+                    <form action="src/controller/mission/soumettreProposition.php" method="POST" class="space-y-6">
                         <div>
                             <label for="proposition" class="block text-sm font-medium text-gray-700">Votre proposition</label>
                             <div class="mt-2">
@@ -154,7 +154,7 @@
                             </div>
                             <div class="ml-3">
                                 <dt class="text-sm font-medium text-gray-500">Localisation</dt>
-                                <dd class="text-sm font-semibold text-gray-900 mt-1">100% Remote</dd>
+                                <dd class="text-sm font-semibold text-gray-900 mt-1"><?= $mission['localisation'] ?? 'Non spécifiée' ?></dd>
                             </div>
                         </div>
                     </dl>
@@ -176,7 +176,7 @@
                             <dl class="space-y-4">
                                 <div>
                                     <dt class="text-sm font-medium text-gray-500">Projets publiés</dt>
-                                    <dd class="text-sm font-semibold text-gray-900 mt-1"><?= $mission['nb_projets'] ?? 0 ?> projets</dd>
+                                    <dd class="text-sm font-semibold text-gray-900 mt-1"><?= $stats['nb_missions'] ?? 0 ?> projets</dd>
                                 </div>
                             </dl>
                         </div>
