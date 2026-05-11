@@ -4,13 +4,11 @@
 ?>
 <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 bg-gray-50 min-h-screen">
     
-    <!-- Lien retour -->
     <a href="index.php?page=mission" class="inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 mb-6 transition-colors">
         <svg class="mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
         Retour aux missions
     </a>
 
-    <!-- En-tête de la mission -->
     <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
         <div>
             <div class="flex items-center gap-3">
@@ -66,7 +64,7 @@
             <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
                 <div class="p-6 md:p-8">
                     <h2 class="text-lg font-bold text-gray-900 mb-6">Soumettre une proposition</h2>
-                    <form action="#" method="POST" class="space-y-6">
+                    <form action="src/controller/mission/soumettreProposition.php" method="POST" class="space-y-6">
                         <div>
                             <label for="proposition" class="block text-sm font-medium text-gray-700">Votre proposition</label>
                             <div class="mt-2">
@@ -156,7 +154,7 @@
                             </div>
                             <div class="ml-3">
                                 <dt class="text-sm font-medium text-gray-500">Localisation</dt>
-                                <dd class="text-sm font-semibold text-gray-900 mt-1">100% Remote</dd>
+                                <dd class="text-sm font-semibold text-gray-900 mt-1"><?= $mission['localisation'] ?? 'Non spécifiée' ?></dd>
                             </div>
                         </div>
                     </dl>
@@ -178,7 +176,7 @@
                             <dl class="space-y-4">
                                 <div>
                                     <dt class="text-sm font-medium text-gray-500">Projets publiés</dt>
-                                    <dd class="text-sm font-semibold text-gray-900 mt-1"><?= $mission['nb_projets'] ?? 0 ?> projets</dd>
+                                    <dd class="text-sm font-semibold text-gray-900 mt-1"><?= $stats['nb_missions'] ?? 0 ?> projets</dd>
                                 </div>
                             </dl>
                         </div>

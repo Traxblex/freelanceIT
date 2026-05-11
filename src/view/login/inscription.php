@@ -35,6 +35,7 @@ include 'src/controller/login/inscription.php';
             </div>
           </div>
 
+<<<<<<< HEAD
           <div>
             <div class="flex items-center justify-between">
               <label for="password" class="block text-sm/6 font-medium text-gray-900">Mot de passe</label>
@@ -42,6 +43,30 @@ include 'src/controller/login/inscription.php';
             <div class="mt-2">
               <input id="password" type="password" minlength="8" name="password" required autocomplete="current-password" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
             </div>
+=======
+          <div id="champs-client-supplementaires" class="hidden mt-4 space-y-4 p-4 border border-gray-200 rounded-lg">
+              <h3 class="text-sm font-bold text-gray-700">Informations de l'entreprise</h3>
+
+              <div>
+                  <label class="block text-sm font-medium text-gray-700">Nom de l'entreprise</label>
+                  <input type="text" name="entreprise" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+              </div>
+              
+              <div>
+                  <label class="block text-sm font-medium text-gray-700">Numéro SIRET (14 chiffres)</label>
+                  <input type="text" name="siret" maxlength="14" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+              </div>
+              
+              <div>
+                  <label class="block text-sm font-medium text-gray-700">Adresse de l'entreprise</label>
+                  <input type="text" name="adresse" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+              </div>
+              
+              <div>
+                  <label class="block text-sm font-medium text-gray-700">Description</label>
+                  <textarea name="description" rows="3" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"></textarea>
+              </div>
+>>>>>>> eadb47cbe4a0be1e0fcba670e3b1f7d09c508dc3
           </div>
           <div>
             <div class="flex items-center justify-between">
