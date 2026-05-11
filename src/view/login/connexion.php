@@ -3,12 +3,13 @@
 include 'src/controller/login/connexion.php'; 
 ?>
 
-<div class="max-w-md mx-auto mt-24 mb-12 bg-white p-8 border border-gray-200 rounded-xl shadow-sm">
-    <h1 class="text-2xl font-bold text-center mb-6">Connexion</h1>
+<div class="max-w-md mx-auto mt-24 mb-12 bg-white p-8 border border-gray-200 rounded-xl shadow-sm mt-20">
+    <img src="public/assets/img/logo_freelanceIT.png" alt="Your Company" class="mx-auto h-10 w-auto" />
+    <h1 class="mt-10 text-2xl font-bold text-center mb-6">Connexion</h1>
 
     <?php if (isset($erreur)): ?>
         <div class="bg-red-100 text-red-700 p-3 rounded-md mb-4 text-sm text-center">
-            <?= htmlspecialchars($erreur) ?>
+            <?= ($erreur) ?>
         </div>
     <?php endif; ?>
 

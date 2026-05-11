@@ -1,4 +1,4 @@
-    <footer class="bg-white shadow-md ">
+    <footer class="bg-whiteshadow-md">
         <div class="container px-6 py-12 mx-auto">
             <div class="md:flex md:-mx-3 md:items-center md:justify-between">
                 <h1 class="text-xl font-semibold tracking-tight  md:mx-3 xl:text-2xl ">Prêt à démarrer votre prochain projet </h1>

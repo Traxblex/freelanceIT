@@ -56,6 +56,9 @@ switch ($page):
     case "profil_public":
         include("src/view/freelance/afficher_profil.php");
         break;
+    case "controller_profil_public":
+        include("src/controller/freelance/afficher_profil.php");
+        break;
     case "profil":
         include("src/controller/profil/mon_espace.php");
     break;
