@@ -66,9 +66,15 @@ switch ($page):
         include("src/controller/candidatures/candidatures.php");
         include("src/view/candidatures/candidatures.php");
         break;
+    case "soumettreProposition":
+        include("src/controller/mission/soumettreProposition.php");
+        break;
     case "dashboard":
         include("src/view/accueil/dashboard.php");
     break;
+    case "profil_client":
+        include("src/view/profil/profil_client.php");
+        break;
     default :
         include("src/view/accueil/index.php");
         break;

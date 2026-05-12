@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($req->execute()) {
                 $id_nouvel_utilisateur = $bdd->lastInsertId();
 
-                if ($role === 'client') {
+               if ($role === 'client') {
                     $siret = $_POST['siret'] ?? null;
                     $adresse = $_POST['adresse'] ?? null;
                     $description = $_POST['description'] ?? null;
@@ -45,6 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $req_entreprise = $bdd->prepare("INSERT INTO entreprises (id_utilisateur, Nom_entreprise, siret, adresse, description) VALUES (?, ?, ?, ?, ?)");
                     $req_entreprise->execute([$id_nouvel_utilisateur, $nom_entreprise, $siret, $adresse, $description]);
                 }
+        
 
                 header("Location: index.php?page=connexion&inscrit=1");
                 exit();

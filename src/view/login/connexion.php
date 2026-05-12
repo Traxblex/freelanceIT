@@ -1,5 +1,4 @@
 <?php 
-// On charge la logique en premier
 include 'src/controller/login/connexion.php'; 
 ?>
 

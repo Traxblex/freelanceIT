@@ -56,11 +56,13 @@ CREATE TABLE missions (
 CREATE TABLE candidatures (
   id int(11) NOT NULL AUTO_INCREMENT,
   id_mission int(11) NOT NULL,
-  id_utilisateur_dev int(11) NOT NULL,
-  message_motivation text DEFAULT NULL,
+  id_freelance int(11) NOT NULL,
+  proposition text DEFAULT NULL,
+  tarif_propose int(11) DEFAULT NULL,
+  delai_livraison varchar(255) DEFAULT NULL,
   statut varchar(50) DEFAULT 'en_attente',
   date_postulation date NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (id_mission) REFERENCES missions(id) ON DELETE CASCADE,
-  FOREIGN KEY (id_utilisateur_dev) REFERENCES utilisateurs(id) ON DELETE CASCADE
+  FOREIGN KEY (id_freelance) REFERENCES profils_freelances(id) ON DELETE CASCADE
 )

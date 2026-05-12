@@ -45,7 +45,7 @@
                     <p class="text-sm font-medium text-gray-500 uppercase">Missions publiées</p>
                     <p class="text-4xl font-bold text-gray-900 mt-2"><?= $stats['nb_missions'] ?? 0 ?></p>
                 </div>
-                <a href="index.php?page=profil" class="p-6 bg-gray-50 rounded-xl border border-gray-100 hover:border-blue-300 transition">
+                <a href="index.php?page=profil_client" class="p-6 bg-gray-50 rounded-xl border border-gray-100 hover:border-blue-300 transition">
                     <h3 class="font-bold text-gray-900 text-lg"> Modifier mon profil</h3>
                     Accéder à mon profil
                 </a>
@@ -64,7 +64,7 @@
 
                 <a href="index.php?page=profil" class="p-6 bg-green-600 rounded-xl hover:bg-green-700 transition">
                     <h3 class="font-bold text-white text-lg">Mon Profil Public</h3>
-                    <p class="text-green-100 text-sm mt-1">Mettre à jour mes compétences.</p>
+                    <p class="text-green-100 text-sm mt-1">Mettre à jour mon profil.</p>
                 </a>
 
                 <a href="index.php?page=mission" class="p-6 bg-white border border-gray-200 rounded-xl hover:border-green-300 transition">
@@ -72,12 +72,20 @@
                     <p class="text-gray-500 text-sm mt-1">Parcourir les opportunités IT.</p>
                 </a>
             </div>
-            <div>
-                <div>
-                    <h3 class="text-lg font-bold text-gray-800 mt-8 mb-4">Mes statistiques</h3>
-                    <p class="text-gray-500 text-sm mt-1">Titre du profil : <?= ($stats['titre']) ?></p>
-                    <p class="text-gray-500 text-sm mt-1">Disponibilité : <?= $stats['disponibilite'] ? 'Disponible' : 'En mission' ?></p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                <div class="p-6 bg-gray-50 rounded-xl border border-gray-100">
+                   <p class="text-sm font-medium text-gray-500 uppercase">nombre de demandes</p>
+                    <p class="text-4xl font-bold text-gray-900 mt-2"><?= ($stats['nb_candidatures'] ?? 0) ?></p>
+                    
                 </div>
+                <div class="p-6 bg-gray-50 rounded-xl border border-gray-100">
+                    <p class="text-sm font-medium text-gray-500 uppercase"></p>
+                    <p class="text-4xl font-bold text-gray-900 mt-2"><?= $stats['nb_missions'] ?? 0 ?></p>
+                </div>
+                <a href="index.php?page=profil" class="p-6 bg-gray-50 rounded-xl border border-gray-100 hover:border-blue-300 transition">
+                    <h3 class="font-bold text-gray-900 text-lg">Gerer mes candidatures</h3>
+                    Accéder à mes candidatures
+                </a>
             </div>
         <?php endif; ?>
     </div>

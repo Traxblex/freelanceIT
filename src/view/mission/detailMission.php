@@ -1,6 +1,7 @@
 <title>detailMission</title>
 <?php
     include ("src/controller/mission/detailMission.php");
+    include ("src/controller/mission/soumettreProposition.php");
 ?>
 <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 bg-gray-50 min-h-screen">
     
@@ -45,7 +46,7 @@
                         </p>
                     </div>
                     
-                    <div >
+                    <div>
                         <h2 class="text-lg font-bold text-gray-900 mb-3">Compétences requises</h2>
                         <div class="flex flex-wrap gap-4 mt-4">
                             <?php 
@@ -60,11 +61,26 @@
                     </div>
                 </div>
             </div>
-
+            
+            <!-- Formulaire de candidature -->
             <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
                 <div class="p-6 md:p-8">
                     <h2 class="text-lg font-bold text-gray-900 mb-6">Soumettre une proposition</h2>
-                    <form action="src/controller/mission/soumettreProposition.php" method="POST" class="space-y-6">
+                    <?php if ($message_erreur): ?>
+                        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                            <strong class="font-bold">Erreur ! </strong>
+                            <span class="block sm:inline"><?= $message_erreur ?></span>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if ($message_succes): ?>
+                        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+                            <strong class="font-bold">Succès ! </strong>
+                            <span class="block sm:inline"><?= $message_succes ?></span>
+                        </div>
+                    <?php endif; ?>
+
+                    <form action="src/controller/mission/soumettreProposition.php" method="POST" class="space-y-6">        
                         <div>
                             <label for="proposition" class="block text-sm font-medium text-gray-700">Votre proposition</label>
                             <div class="mt-2">
@@ -95,6 +111,7 @@
                     </form>
                 </div>
             </div>
+            <!-- Fin du formulaire de candidature -->
 
         </div>
 
