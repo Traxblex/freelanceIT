@@ -21,9 +21,9 @@
                     <p class="font-semibold text-gray-800">Pour les clients</p>
 
                     <div class="flex flex-col items-start mt-5 space-y-2">
-                        <a href="#" class="text-gray-600 transition-colors duration-300  dark:hover:text-blue-400 hover:underline hover:text-blue-500">Comment fonctionne FreelanceIT</a>
-                        <a href="#" class="text-gray-600 transition-colors duration-300  dark:hover:text-blue-400 hover:underline hover:text-blue-500">Guide Qualité</a>
-                        <a href="#" class="text-gray-600 transition-colors duration-300  dark:hover:text-blue-400 hover:underline hover:text-blue-500">Conditions d'utilisation</a>
+                        <a href="index.php?page=comment_fonctionne" class="text-gray-600 transition-colors duration-300  dark:hover:text-blue-400 hover:underline hover:text-blue-500">Comment fonctionne FreelanceIT</a>
+                        <a href="index.php?page=guide_qualite" class="text-gray-600 transition-colors duration-300  dark:hover:text-blue-400 hover:underline hover:text-blue-500">Guide Qualite</a>
+                        <a href="index.php?page=conditions_utilisation" class="text-gray-600 transition-colors duration-300  dark:hover:text-blue-400 hover:underline hover:text-blue-500">Conditions d'utilisation</a>
                     </div>
                 </div>
 
@@ -31,9 +31,9 @@
                     <p class="font-semibold text-gray-800 ">Pour les freelances</p>
 
                     <div class="flex flex-col items-start mt-5 space-y-2">
-                        <a href="#" class="text-gray-600 transition-colors duration-300  dark:hover:text-blue-400 hover:underline hover:text-blue-500">Devenir freelance</a>
-                        <a href="#" class="text-gray-600 transition-colors duration-300  dark:hover:text-blue-400 hover:underline hover:text-blue-500">Information</a>
-                        <a href="#" class="text-gray-600 transition-colors duration-300  dark:hover:text-blue-400 hover:underline hover:text-blue-500">Financement</a>
+                        <a href="index.php?page=devenir_freelance" class="text-gray-600 transition-colors duration-300  dark:hover:text-blue-400 hover:underline hover:text-blue-500">Devenir freelance</a>
+                        <a href="index.php?page=information_freelance" class="text-gray-600 transition-colors duration-300  dark:hover:text-blue-400 hover:underline hover:text-blue-500">Information</a>
+                        <a href="index.php?page=financement_freelance" class="text-gray-600 transition-colors duration-300  dark:hover:text-blue-400 hover:underline hover:text-blue-500">Financement</a>
                     </div>
                 </div>
 
@@ -42,7 +42,7 @@
 
                     <div class="flex flex-col items-start mt-5 space-y-2">
                         <a href="index.php?page=apropos" class="text-gray-600 transition-colors duration-300  dark:hover:text-blue-400 hover:underline hover:text-blue-500">Qui sommes-nous</a>
-                        <a href="#" class="text-gray-600 transition-colors duration-300  dark:hover:text-blue-400 hover:underline hover:text-blue-500">Notre philosophie</a>
+                        <a href="index.php?page=philosophie" class="text-gray-600 transition-colors duration-300  dark:hover:text-blue-400 hover:underline hover:text-blue-500">Notre philosophie</a>
                         <a href="index.php?page=faq" class="text-gray-600 transition-colors duration-300  dark:hover:text-blue-400 hover:underline hover:text-blue-500">FAQ</a>
                     </div>
                 </div>
@@ -51,8 +51,8 @@
                     <p class="font-semibold text-gray-800 ">Contactez-nous</p>
 
                     <div class="flex flex-col items-start mt-5 space-y-2">
-                        <a href="#" class="text-gray-600 transition-colors duration-300  dark:hover:text-blue-400 hover:underline hover:text-blue-500">+33 01 00 00 00 00</a>
-                        <a href="#" class="text-gray-600 transition-colors duration-300  dark:hover:text-blue-400 hover:underline hover:text-blue-500">contact@freelanceIT.com</a>
+                        <a href="index.php?page=contact" class="text-gray-600 transition-colors duration-300  dark:hover:text-blue-400 hover:underline hover:text-blue-500">+33 01 00 00 00 00</a>
+                        <a href="index.php?page=contact" class="text-gray-600 transition-colors duration-300  dark:hover:text-blue-400 hover:underline hover:text-blue-500">contact@freelanceIT.com</a>
                     </div>
                 </div>
             </div>

@@ -41,6 +41,27 @@ switch ($page):
     case "contact":
         include("src/view/contact/contact.php");
         break;
+    case "comment_fonctionne":
+        include("src/view/apropos/comment_fonctionne.php");
+        break;
+    case "guide_qualite":
+        include("src/view/apropos/guide_qualite.php");
+        break;
+    case "conditions_utilisation":
+        include("src/view/apropos/conditions_utilisation.php");
+        break;
+    case "philosophie":
+        include("src/view/apropos/philosophie.php");
+        break;
+    case "devenir_freelance":
+        include("src/view/freelance/devenir_freelance.php");
+        break;
+    case "information_freelance":
+        include("src/view/freelance/information_freelance.php");
+        break;
+    case "financement_freelance":
+        include("src/view/freelance/financement_freelance.php");
+        break;
     case "profil":
         include("src/view/profil/profil.php");
         break;
