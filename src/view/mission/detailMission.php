@@ -92,7 +92,7 @@
                             <div>
                                 <label for="tarif" class="block text-sm font-medium text-gray-700">Tarif proposé (€)</label>
                                 <div class="mt-2">
-                                    <input type="number" name="tarif" id="tarif" class="block w-full rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-900 sm:text-sm sm:leading-6 px-3" placeholder="5000">
+                                    <input type="number" name="tarif" id="tarif" class="block w-full rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-900 sm:text-sm sm:leading-6 px-3" placeholder="1000">
                                 </div>
                             </div>
                             

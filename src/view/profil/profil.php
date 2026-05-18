@@ -16,7 +16,7 @@
     <?php endif; ?>
     <div class="flex flex-col items-center mb-8">
         <?php if (!empty($profil['photo'])): ?>
-            <img src="public/uploads/<?= htmlspecialchars($profil['photo']) ?>" 
+            <img src="public/uploads/<?=($profil['photo']) ?>" 
                 alt="Ma photo de profil" 
                 class="h-32 w-32 rounded-full object-cover border-4 border-white shadow-lg mb-3">
             
