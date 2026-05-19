@@ -1,6 +1,7 @@
 <title>detailMission</title>
 <?php
     include ("src/controller/mission/detailMission.php");
+    include ("src/controller/mission/soumettreProposition.php");
 ?>
 <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 bg-gray-50 min-h-screen">
     
@@ -65,21 +66,21 @@
             <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
                 <div class="p-6 md:p-8">
                     <h2 class="text-lg font-bold text-gray-900 mb-6">Soumettre une proposition</h2>
-                    <?php
-                    include 'src/controller/mission/soumettreProposition.php';
-                    ?>
-                    <?php
-                        // Lire les messages passés en GET après redirection
-                        $message_succes = isset($_GET['succes']) ? "Ta proposition a été envoyée avec succès !" : null;
-                        $message_erreur = match($_GET['erreur'] ?? '') {
-                            'doublon' => "Tu as déjà envoyé une proposition pour cette mission !",
-                            'noprofil' => "Profil freelance introuvable. Complète ton profil d'abord.",
-                            'nomission' => "Mission introuvable.",
-                            default => null
-                        };
-                    ?>
+                    <?php if ($message_erreur): ?>
+                        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                            <strong class="font-bold">Erreur ! </strong>
+                            <span class="block sm:inline"><?= $message_erreur ?></span>
+                        </div>
+                    <?php endif; ?>
 
-                    <form action="index.php?page=soumettreProposition" method="POST" class="space-y-6">        
+                    <?php if ($message_succes): ?>
+                        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+                            <strong class="font-bold">Succès ! </strong>
+                            <span class="block sm:inline"><?= $message_succes ?></span>
+                        </div>
+                    <?php endif; ?>
+
+                    <form action="src/controller/mission/soumettreProposition.php" method="POST" class="space-y-6">        
                         <div>
                             <label for="proposition" class="block text-sm font-medium text-gray-700">Votre proposition</label>
                             <div class="mt-2">
@@ -152,7 +153,6 @@
                             </div>
                         </div>
                         
-                        <!-- Ligne Publié -->
                         <div class="flex items-start">
                             <div class="flex-shrink-0 mt-0.5">
                                 <svg class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
@@ -163,7 +163,6 @@
                             </div>
                         </div>
                         
-                        <!-- Ligne Localisation -->
                         <div class="flex items-start">
                             <div class="flex-shrink-0 mt-0.5">
                                 <svg class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
@@ -177,7 +176,6 @@
                 </div>
             </div>
 
-            <!-- Carte : Entreprise -->
             <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
                 <div class="p-6 md:p-8">
                     <h3 class="text-lg font-bold text-gray-900 mb-4">À propos de l'entreprise</h3>
