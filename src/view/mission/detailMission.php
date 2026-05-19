@@ -1,7 +1,6 @@
 <title>detailMission</title>
 <?php
     include ("src/controller/mission/detailMission.php");
-    include ("src/controller/mission/soumettreProposition.php");
 ?>
 <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 bg-gray-50 min-h-screen">
     
@@ -66,25 +65,25 @@
             <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
                 <div class="p-6 md:p-8">
                     <h2 class="text-lg font-bold text-gray-900 mb-6">Soumettre une proposition</h2>
-                    <?php if ($message_erreur): ?>
-                        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-                            <strong class="font-bold">Erreur ! </strong>
-                            <span class="block sm:inline"><?= $message_erreur ?></span>
-                        </div>
-                    <?php endif; ?>
+                    <?php
+                    include 'src/controller/mission/soumettreProposition.php';
+                    ?>
+                    <?php
+                        // Lire les messages passés en GET après redirection
+                        $message_succes = isset($_GET['succes']) ? "Ta proposition a été envoyée avec succès !" : null;
+                        $message_erreur = match($_GET['erreur'] ?? '') {
+                            'doublon' => "Tu as déjà envoyé une proposition pour cette mission !",
+                            'noprofil' => "Profil freelance introuvable. Complète ton profil d'abord.",
+                            'nomission' => "Mission introuvable.",
+                            default => null
+                        };
+                    ?>
 
-                    <?php if ($message_succes): ?>
-                        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
-                            <strong class="font-bold">Succès ! </strong>
-                            <span class="block sm:inline"><?= $message_succes ?></span>
-                        </div>
-                    <?php endif; ?>
-
-                    <form action="src/controller/mission/soumettreProposition.php" method="POST" class="space-y-6">        
+                    <form action="index.php?page=soumettreProposition" method="POST" class="space-y-6">        
                         <div>
                             <label for="proposition" class="block text-sm font-medium text-gray-700">Votre proposition</label>
                             <div class="mt-2">
-                                <textarea id="proposition" name="proposition" rows="4" class="block w-full rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-900 sm:text-sm sm:leading-6 px-3" placeholder="Expliquez pourquoi vous êtes le candidat idéal pour ce projet..."></textarea>
+                                <textarea id="proposition" type="text" name="proposition" rows="4" class="block w-full rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-900 sm:text-sm sm:leading-6 px-3" placeholder="Expliquez pourquoi vous êtes le candidat idéal pour ce projet..."></textarea>
                             </div>
                         </div>
                         
