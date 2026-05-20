@@ -65,9 +65,6 @@ switch ($page):
     case "profil":
         include("src/view/profil/profil.php");
         break;
-    case "apropos":
-        include("src/view/apropos/apropos.php");
-        break;
     case"faq":
         include("src/view/apropos/faq.php");
         break;
@@ -80,10 +77,8 @@ switch ($page):
     case "controller_profil_public":
         include("src/controller/freelance/afficher_profil.php");
         break;
-    case "profil":
-        include("src/controller/profil/mon_espace.php");
-    break;
     case "candidatures":
+        include("src/controller/candidatures/candidatures.php");
         include("src/view/candidatures/candidatures.php");
         break;
     case "controller_candidatures":
@@ -94,7 +89,7 @@ switch ($page):
         break;
     case "dashboard":
         include("src/view/accueil/dashboard.php");
-    break;
+        break;
     case "profil_client":
         include("src/view/profil/profil_client.php");
         break;
