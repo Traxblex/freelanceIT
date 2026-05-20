@@ -87,6 +87,9 @@ switch ($page):
     case "contacter_freelance":
         include("src/view/messages/contacter_freelance.php");
         break;
+    case "messagerie":
+        include("src/view/messages/messagerie.php");
+        break;
     case "dashboard":
         include("src/view/accueil/dashboard.php");
         break;
