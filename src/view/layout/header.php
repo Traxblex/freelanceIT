@@ -30,7 +30,7 @@
                         <a href="index.php?page=deconnexion" class="bg-red-50 text-red-600 px-4 py-2 rounded-md font-medium hover:bg-red-100 transition">
                             Déconnexion
                         </a>
-                        
+                        <a href="index.php?page=messagerie" class="text-gray-700 hover:text-blue-600 font-medium" > Mes messages</a>
                     <?php else: ?>
                         
                         <a href="index.php?page=connexion" class="text-gray-700 hover:text-blue-600 font-medium">Connexion</a>

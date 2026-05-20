@@ -67,7 +67,7 @@
                 </div>
             </div>
 
-            <a href="index.php?page=profil_public&id=<?= $f['id_utilisateur'] ?>" 
+            <a href="index.php?page=contacter_freelance&id=<?= $f['id_utilisateur'] ?>" 
                class="mt-6 block text-center py-2 px-4 bg-black text-white rounded-md text-sm font-medium hover:bg-gray-800 transition">
                 Contacter
             </a>

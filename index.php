@@ -71,9 +71,6 @@ switch ($page):
     case "deconnexion":
         include("src/controller/login/deconnexion.php");
         break;
-    case "profil_public":
-        include("src/view/freelance/afficher_profil.php");
-        break;
     case "controller_profil_public":
         include("src/controller/freelance/afficher_profil.php");
         break;
