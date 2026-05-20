@@ -86,6 +86,9 @@ switch ($page):
     case "candidatures":
         include("src/view/candidatures/candidatures.php");
         break;
+    case "controller_candidatures":
+        include("src/controller/candidatures/candidatures.php");
+        break;
     case "soumettreProposition":
         include("src/controller/mission/soumettreProposition.php");
         break;

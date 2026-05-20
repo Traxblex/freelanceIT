@@ -12,7 +12,7 @@ if (!$id_user) {
 
 if ($role === 'freelance') {
     // Le freelance voit ses propres candidatures
-    $stmt = $bdd->prepare("
+    $req = $bdd->prepare("
         SELECT c.id, c.proposition, c.tarif_propose, c.delai_livraison, c.statut, c.date_postulation,
                m.titre AS titre_mission, m.budget,
                e.Nom_entreprise AS nom_entreprise
@@ -23,12 +23,12 @@ if ($role === 'freelance') {
         WHERE pf.id_utilisateur = ?
         ORDER BY c.date_postulation DESC
     ");
-    $stmt->execute([$id_user]);
-    $candidatures = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $req->execute([$id_user]);
+    $candidatures = $req->fetchAll(PDO::FETCH_ASSOC);
 
 } elseif ($role === 'client') {
     // Le client voit les candidatures reçues sur ses missions
-    $stmt = $bdd->prepare("
+    $req = $bdd->prepare("
         SELECT c.id, c.proposition, c.tarif_propose, c.delai_livraison, c.statut, c.date_postulation,
                m.titre AS titre_mission, m.id AS id_mission,
                u.nom, u.prenom, u.email,
@@ -41,8 +41,8 @@ if ($role === 'freelance') {
         WHERE e.id_utilisateur = ?
         ORDER BY c.date_postulation DESC
     ");
-    $stmt->execute([$id_user]);
-    $candidatures = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $req->execute([$id_user]);
+    $candidatures = $req->fetchAll(PDO::FETCH_ASSOC);
 }
 
 // Traitement accept/refus (client uniquement)
