@@ -5,7 +5,7 @@
 <div class="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32 lg:py-40">
   
   <div class="absolute inset-0 -z-10">
-    <img src="public/assets/img/accueil.png" alt="Image d'accueil" class="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center">
+    <img src="public/assets/img/accueil.avif" alt="Image d'accueil" class="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center">
     <div class="absolute inset-0 -z-10 bg-gray-900/50"></div>
 
   </div>

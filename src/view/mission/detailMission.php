@@ -64,14 +64,14 @@
                     <?php if ($message_erreur): ?>
                         <div class="mb-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded" role="alert">
                             <strong class="font-bold">Erreur !</strong>
-                            <span class="block sm:inline"><?= htmlspecialchars($message_erreur) ?></span>
+                            <span class="block sm:inline"><?= ($message_erreur) ?></span>
                         </div>
                     <?php endif; ?>
 
                     <?php if ($message_succes): ?>
                         <div class="mb-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded" role="alert">
                             <strong class="font-bold">Succès !</strong>
-                            <span class="block sm:inline"><?= htmlspecialchars($message_succes) ?></span>
+                            <span class="block sm:inline"><?= ($message_succes) ?></span>
                         </div>
                     <?php endif; ?>
 
@@ -132,7 +132,7 @@
                             <div class="flex-shrink-0 mt-0.5"><svg class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg></div>
                             <div class="ml-3">
                                 <dt class="text-sm font-medium text-gray-500">Propositions</dt>
-                                <dd class="text-sm font-semibold text-gray-900 mt-1"><?= $mission['nb_candidatures'] ?? 0 ?> candidatures</dd>
+                                <dd class="text-sm font-semibold text-gray-900 mt-1"><?= $stats['nb_candidats'] ?? 0 ?> candidatures</dd>
                             </div>
                         </div>
                         <div class="flex items-start">
