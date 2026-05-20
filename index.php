@@ -71,8 +71,8 @@ switch ($page):
     case "deconnexion":
         include("src/controller/login/deconnexion.php");
         break;
-    case "profil_public":
-        include("src/view/freelance/afficher_profil.php");
+    case "contacter_freelance":
+        include("src/view/freelance/contacter_freelance.php");
         break;
     case "controller_profil_public":
         include("src/controller/freelance/afficher_profil.php");
@@ -87,8 +87,8 @@ switch ($page):
     case "soumettreProposition":
         include("src/controller/mission/soumettreProposition.php");
         break;
-    case "contacterFreelance":
-        include("src/controller/freelance/afficher_profil.php");
+    case "controller_contacter_freelance":
+        include("src/controller/freelance/contacter_freelance.php");
         break;
     case "dashboard":
         include("src/view/accueil/dashboard.php");
