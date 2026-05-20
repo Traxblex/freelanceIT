@@ -60,6 +60,7 @@
             <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
                 <div class="p-6 md:p-8">
                     <h2 class="text-lg font-bold text-gray-900 mb-6">Soumettre une proposition</h2>
+                    <p class="text-sm text-gray-500 mb-6">Remplis le formulaire ci-dessous pour envoyer une proposition au freelance. Sois clair et précis dans ta proposition pour maximiser tes chances de collaboration !</p>
 
                     <?php if ($message_erreur): ?>
                         <div class="mb-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded" role="alert">
@@ -81,7 +82,7 @@
                         <div>
                             <label for="proposition" class="block text-sm font-medium text-gray-700">Votre proposition</label>
                             <div class="mt-2">
-                                <textarea id="proposition" name="proposition" rows="4" class="block w-full rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-900 sm:text-sm sm:leading-6 px-3" placeholder="Expliquez pourquoi vous êtes le candidat idéal pour ce projet..."></textarea>
+                                <textarea id="proposition" name="proposition" rows="4" class="block w-full rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-900 sm:text-sm sm:leading-6 px-3" placeholder="Explique pourquoi tu est le candidat idéal pour ce projet..."></textarea>
                             </div>
                         </div>
                         
@@ -132,7 +133,7 @@
                             <div class="flex-shrink-0 mt-0.5"><svg class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg></div>
                             <div class="ml-3">
                                 <dt class="text-sm font-medium text-gray-500">Propositions</dt>
-                                <dd class="text-sm font-semibold text-gray-900 mt-1"><?= $stats['nb_candidats'] ?? 0 ?> candidatures</dd>
+                                <dd class="text-sm font-semibold text-gray-900 mt-1"><?= $mission['nb_candidatures'] ?? 0 ?> candidatures</dd>
                             </div>
                         </div>
                         <div class="flex items-start">

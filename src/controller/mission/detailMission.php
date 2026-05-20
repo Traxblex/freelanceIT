@@ -19,9 +19,6 @@ $req_count = $bdd->prepare("SELECT COUNT(*) as total FROM missions WHERE id_entr
 $date_creation = new DateTime($mission['date_creation']);
 $maintenant = new DateTime();
 $difference = $maintenant->diff($date_creation);
-$req_coutcandidats = $bdd->prepare("SELECT COUNT(*) as total FROM candidatures WHERE id_mission = ?");
-$req_coutcandidats->execute([$id_mission]);
-$stats['nb_candidats'] = $req_coutcandidats->fetch()['total'];
 
 if ($difference->d == 0) {
     $mission['temps_ecoule'] = "Aujourd'hui";

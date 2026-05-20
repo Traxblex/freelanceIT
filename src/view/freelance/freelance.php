@@ -1,3 +1,4 @@
+<title>Freelance</title>
 <?php include("src/controller/freelance/freelance.php"); ?>
 
 <div class="max-w-7xl mx-auto px-6 lg:px-8 mt-24 mb-12">

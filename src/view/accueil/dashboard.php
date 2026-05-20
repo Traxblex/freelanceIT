@@ -78,12 +78,9 @@
                     <p class="text-4xl font-bold text-gray-900 mt-2"><?= ($stats['nb_candidatures'] ?? 0) ?></p>
                     
                 </div>
-                <div class="p-6 bg-gray-50 rounded-xl border border-gray-100">
-                    <p class="text-sm font-medium text-gray-500 uppercase"></p>
-                    <p class="text-4xl font-bold text-gray-900 mt-2"><?= $stats['nb_missions'] ?? 0 ?></p>
-                </div>
-                <a href="index.php?page=profil" class="p-6 bg-gray-50 rounded-xl border border-gray-100 hover:border-blue-300 transition">
-                    <h3 class="font-bold text-gray-900 text-lg">Gerer mes candidatures</h3>
+                
+                <a href="index.php?page=candidatures" class="p-6 bg-gray-50 rounded-xl border border-gray-100 hover:border-blue-300 transition">
+                    <h3 class="font-bold text-gray-900 text-lg">Voir mes candidatures</h3>
                     Accéder à mes candidatures
                 </a>
             </div>

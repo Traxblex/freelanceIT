@@ -32,5 +32,9 @@ if ($role === 'client') {
     
     $stats['disponibilite'] = $profil['disponibilite'] ?? 0;
     $stats['titre'] = $profil['titre_profil'] ?? 'Profil non complété';
+
+    $req_count = $bdd->prepare("SELECT COUNT(*) as total FROM candidatures WHERE id_freelance = ?");
+    $req_count->execute([$user_id]);
+    $stats['nb_candidatures'] = $req_count->fetch()['total'];
 }
 ?>

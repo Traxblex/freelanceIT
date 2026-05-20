@@ -87,6 +87,9 @@ switch ($page):
     case "soumettreProposition":
         include("src/controller/mission/soumettreProposition.php");
         break;
+    case "contacterFreelance":
+        include("src/controller/freelance/afficher_profil.php");
+        break;
     case "dashboard":
         include("src/view/accueil/dashboard.php");
         break;
