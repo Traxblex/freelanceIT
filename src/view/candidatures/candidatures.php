@@ -61,11 +61,11 @@ $notif = $_GET['action'] ?? null;
                 <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
                     <div class="flex-1">
                         <div class="flex items-center gap-3 mb-2">
-                            <h2 class="text-base font-bold text-gray-900"><?= htmlspecialchars($c['titre_mission']) ?></h2>
+                            <h2 class="text-base font-bold text-gray-900"><?= ($c['titre_mission']) ?></h2>
                             <span class="inline-flex items-center rounded-full <?= $badge[0] ?> px-2.5 py-0.5 text-xs font-medium"><?= $badge[1] ?></span>
                         </div>
-                        <p class="text-sm text-gray-500 mb-3"><?= htmlspecialchars($c['nom_entreprise']) ?> &bull; Budget : <strong><?= $c['budget'] ?> €</strong></p>
-                        <p class="text-sm text-gray-700 line-clamp-2"><?= htmlspecialchars($c['proposition']) ?></p>
+                        <p class="text-sm text-gray-500 mb-3"><?= ($c['nom_entreprise']) ?> &bull; Budget : <strong><?= $c['budget'] ?> €</strong></p>
+                        <p class="text-sm text-gray-700 line-clamp-2"><?= ($c['proposition']) ?></p>
                     </div>
                     <div class="text-right shrink-0">
                         <p class="text-lg font-bold text-gray-900"><?= $c['tarif_propose'] ?> €</p>
@@ -90,7 +90,7 @@ $notif = $_GET['action'] ?? null;
         <div class="mb-8">
             <h2 class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
                 <svg class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                <?= htmlspecialchars($titre_mission) ?>
+                <?= ($titre_mission) ?>
                 <span class="text-sm font-normal text-gray-500">(<?= count($cands) ?> candidature<?= count($cands) > 1 ? 's' : '' ?>)</span>
             </h2>
             <div class="space-y-4">
@@ -108,25 +108,25 @@ $notif = $_GET['action'] ?? null;
                         <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
                             <div class="flex-1">
                                 <div class="flex items-center gap-3 mb-1">
-                                    <h3 class="text-base font-bold text-gray-900"><?= htmlspecialchars($c['nom'] . ' ' . $c['prenom']) ?></h3>
+                                    <h3 class="text-base font-bold text-gray-900"><?= ($c['nom'] . ' ' . $c['prenom']) ?></h3>
                                     <span class="inline-flex items-center rounded-full <?= $badge[0] ?> px-2.5 py-0.5 text-xs font-medium"><?= $badge[1] ?></span>
                                 </div>
-                                <p class="text-sm text-gray-500 mb-1"><?= htmlspecialchars($c['email']) ?></p>
+                                <p class="text-sm text-gray-500 mb-1"><?= ($c['email']) ?></p>
                                 <?php if ($c['titre_profil']): ?>
-                                    <p class="text-sm text-gray-600 mb-2 italic"><?= htmlspecialchars($c['titre_profil']) ?></p>
+                                    <p class="text-sm text-gray-600 mb-2 italic"><?= ($c['titre_profil']) ?></p>
                                 <?php endif; ?>
                                 <?php if ($c['competences']): ?>
                                     <div class="flex flex-wrap gap-2 mb-3">
                                         <?php foreach (explode(',', $c['competences']) as $comp): ?>
-                                            <span class="inline-flex items-center rounded-md bg-gray-100 px-2 py-0.5 text-xs font-medium text-gray-700"><?= trim(htmlspecialchars($comp)) ?></span>
+                                            <span class="inline-flex items-center rounded-md bg-gray-100 px-2 py-0.5 text-xs font-medium text-gray-700"><?= trim(($comp)) ?></span>
                                         <?php endforeach; ?>
                                     </div>
                                 <?php endif; ?>
-                                <p class="text-sm text-gray-700"><?= nl2br(htmlspecialchars($c['proposition'])) ?></p>
+                                <p class="text-sm text-gray-700"><?= nl2br(($c['proposition'])) ?></p>
                             </div>
                             <div class="shrink-0 text-right">
                                 <p class="text-xl font-bold text-gray-900"><?= $c['tarif_propose'] ?> €</p>
-                                <p class="text-xs text-gray-500 mb-1">Délai : <?= htmlspecialchars($c['delai_livraison']) ?></p>
+                                <p class="text-xs text-gray-500 mb-1">Délai : <?= ($c['delai_livraison']) ?></p>
                                 <p class="text-xs text-gray-400 mb-4"><?= date('d/m/Y', strtotime($c['date_postulation'])) ?></p>
 
                                 <?php if ($statut === 'en_attente'): ?>

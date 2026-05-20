@@ -65,4 +65,16 @@ CREATE TABLE candidatures (
   PRIMARY KEY (id),
   FOREIGN KEY (id_mission) REFERENCES missions(id) ON DELETE CASCADE,
   FOREIGN KEY (id_freelance) REFERENCES profils_freelances(id) ON DELETE CASCADE
+);
+CREATE TABLE messages (
+  id INT(11) NOT NULL AUTO_INCREMENT,
+  id_expediteur INT(11) NOT NULL,
+  id_destinataire INT(11) NOT NULL,
+  sujet VARCHAR(255) NOT NULL,
+  contenu TEXT NOT NULL,
+  date_envoi DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  lu  TINYINT(1) NOT NULL DEFAULT 0,
+  PRIMARY KEY (id),
+  FOREIGN KEY (id_expediteur)   REFERENCES utilisateurs(id) ON DELETE CASCADE,
+  FOREIGN KEY (id_destinataire) REFERENCES utilisateurs(id) ON DELETE CASCADE
 )
