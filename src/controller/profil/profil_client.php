@@ -2,83 +2,85 @@
 require_once 'src/model/bdd.php';
 
 if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] !== 'client') {
-    header('Location: index.php?page=dashboard');
+    header('Location: index.php?page=connexion');
     exit();
 }
 
 $user_id = $_SESSION['user_id'];
 $message_succes = null;
+$message_erreur = null;
 
+// --- TRAITEMENT DU FORMULAIRE ---
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nom = $_POST['nom'] ?? '';
-    $prenom = $_POST['prenom'] ?? '';
-    $email = $_POST['email'] ?? '';
-    $entreprise = $_POST['entreprise'] ?? '';
-    $siret = $_POST['siret'] ?? '';
-    $adresse = $_POST['adresse'] ?? '';
-    $description = $_POST['description'] ?? '';
-    
-    $req_check = $bdd->prepare("SELECT id FROM entreprises INNER JOIN utilisateurs ON entreprises.id_utilisateur = utilisateurs.id WHERE utilisateurs.id = ?");
-    $req_check->execute([$user_id]);
-    $profil_existe = $req_check->fetch();
+    $nom        = trim($_POST['nom'] ?? '');
+    $prenom     = trim($_POST['prenom'] ?? '');
+    $email      = trim($_POST['email'] ?? '');
+    $entreprise = trim($_POST['entreprise'] ?? '');
+    $siret      = trim($_POST['siret'] ?? '');
+    $adresse    = trim($_POST['adresse'] ?? '');
+    $description= trim($_POST['description'] ?? '');
 
-
-    if ($profil_existe) {
+    // Validation basique
+    if (empty($nom) || empty($prenom) || empty($email)) {
+        $message_erreur = "Le nom, prénom et e-mail sont obligatoires.";
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $message_erreur = "L'adresse e-mail n'est pas valide.";
+    } elseif (!empty($siret) && (strlen($siret) !== 14 || !ctype_digit($siret))) {
+        $message_erreur = "Le numéro SIRET doit contenir exactement 14 chiffres.";
+    } else {
+        // Mise à jour utilisateurs
         $req = $bdd->prepare("UPDATE utilisateurs SET nom = ?, prenom = ?, email = ? WHERE id = ?");
         $req->execute([$nom, $prenom, $email, $user_id]);
-        $req_entreprise = $bdd->prepare("UPDATE entreprises SET nom_entreprise = ?, siret = ?, adresse = ?, description = ? WHERE id_utilisateur = ?");
-        $req_entreprise->execute([$entreprise, $siret, $adresse, $description, $user_id]);
-    } else {
-        $req = $bdd->prepare("INSERT INTO utilisateurs (id, nom, prenom, email) VALUES (?, ?, ?, ?)");
-        $req->execute([$user_id, $nom, $prenom, $email]);
-        $req_entreprise = $bdd->prepare("INSERT INTO entreprises (id_utilisateur, nom_entreprise, siret, adresse, description) VALUES (?, ?, ?, ?, ?)");
-        $req_entreprise->execute([$user_id, $entreprise, $siret, $adresse, $description]);
-    }
 
-    $message_succes = "Ton profil a été mis à jour avec succès !";
-    
-    if (isset($_FILES['image_profil']) && $_FILES['image_profil']['error'] === UPLOAD_ERR_OK) {
-        
-        $dossier_destination = 'public/uploads/'; 
-        $nom_original = $_FILES['image_profil']['name'];
-        $chemin_temporaire = $_FILES['image_profil']['tmp_name'];
-        
-        // Sécurité : on vérifie l'extension
-        $extensions_autorisees = ['jpg', 'jpeg', 'png', 'webp'];
-        $extension_fichier = strtolower(pathinfo($nom_original, PATHINFO_EXTENSION));
+        // Vérifie si une ligne entreprise existe déjà
+        $req_check = $bdd->prepare("SELECT id FROM entreprises WHERE id_utilisateur = ?");
+        $req_check->execute([$user_id]);
+        $existe = $req_check->fetch();
 
-        if (in_array($extension_fichier, $extensions_autorisees)) {
-            
-            // On crée un nom unique pour éviter les doublons (ex: profil_14_65b3x.jpg)
-            $nouveau_nom = 'profil_' . $user_id . '_' . uniqid() . '.' . $extension_fichier;
-            $chemin_final = $dossier_destination . $nouveau_nom;
-
-            // On déplace le fichier sur le serveur
-            if (move_uploaded_file($chemin_temporaire, $chemin_final)) {
-                
-                // On met à jour UNIQUEMENT la colonne photo dans la base de données
-                $req_photo = $bdd->prepare("UPDATE profils_freelances SET photo = ? WHERE id_utilisateur = ?");
-                $req_photo->execute([$nouveau_nom, $user_id]);
-                
-                $message_succes = "Ton profil et ta photo ont été mis à jour !";
-            } else {
-                $message_succes = "Profil mis à jour, mais erreur lors de la sauvegarde de l'image.";
-            }
+        if ($existe) {
+            $req_e = $bdd->prepare("UPDATE entreprises SET nom_entreprise = ?, siret = ?, adresse = ?, description = ? WHERE id_utilisateur = ?");
+            $req_e->execute([$entreprise, $siret, $adresse, $description, $user_id]);
         } else {
-            $message_succes = "Profil mis à jour, mais format d'image refusé (JPG, PNG ou WEBP uniquement).";
+            $req_e = $bdd->prepare("INSERT INTO entreprises (id_utilisateur, nom_entreprise, siret, adresse, description) VALUES (?, ?, ?, ?, ?)");
+            $req_e->execute([$user_id, $entreprise, $siret, $adresse, $description]);
         }
+
+        // Gestion de la photo de profil
+        if (isset($_FILES['photo']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK) {
+            $extensions_ok = ['jpg', 'jpeg', 'png', 'webp'];
+            $ext = strtolower(pathinfo($_FILES['photo']['name'], PATHINFO_EXTENSION));
+
+            if (in_array($ext, $extensions_ok)) {
+                $dossier = 'public/uploads/';
+                if (!is_dir($dossier)) mkdir($dossier, 0755, true);
+                $nom_fichier = 'profil_' . $user_id . '_' . uniqid() . '.' . $ext;
+                if (move_uploaded_file($_FILES['photo']['tmp_name'], $dossier . $nom_fichier)) {
+                    $req_photo = $bdd->prepare("UPDATE utilisateurs SET photo = ? WHERE id = ?");
+                    $req_photo->execute([$nom_fichier, $user_id]);
+                }
+            }
+        }
+
+        $_SESSION['user_nom'] = $prenom . ' ' . $nom;
+        $message_succes = "Ton profil a été mis à jour avec succès !";
     }
 }
 
-
-$req_profil = $bdd->prepare("SELECT * FROM profils_freelances WHERE id_utilisateur = ?");
-$req_profil->execute([$user_id]);
-$profil = $req_profil->fetch(PDO::FETCH_ASSOC);
+// --- RÉCUPÉRATION DU PROFIL ---
+$req_u = $bdd->prepare("
+    SELECT u.id, u.nom, u.prenom, u.email, u.photo,
+           e.nom_entreprise, e.siret, e.adresse, e.description
+    FROM utilisateurs u
+    LEFT JOIN entreprises e ON e.id_utilisateur = u.id
+    WHERE u.id = ?
+");
+$req_u->execute([$user_id]);
+$profil = $req_u->fetch(PDO::FETCH_ASSOC);
 
 if (!$profil) {
     $profil = [
-        'titre_profil' => '', 'description' => '', 'competences' => '', 
-        'localisation' => '', 'tarif_horaire' => '', 'disponibilite' => 1, 'exp' => null
+        'nom' => '', 'prenom' => '', 'email' => '', 'photo' => null,
+        'nom_entreprise' => '', 'siret' => '', 'adresse' => '', 'description' => ''
     ];
 }
 ?>
