@@ -18,7 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $adresse = $_POST['adresse'] ?? '';
     $description = $_POST['description'] ?? '';
     
-// On vérifie si le client a déjà un profil en base de données
     $req_check = $bdd->prepare("SELECT id FROM entreprises INNER JOIN utilisateurs ON entreprises.id_utilisateur = utilisateurs.id WHERE utilisateurs.id = ?");
     $req_check->execute([$user_id]);
     $profil_existe = $req_check->fetch();
