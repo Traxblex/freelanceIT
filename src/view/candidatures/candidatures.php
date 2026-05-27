@@ -78,9 +78,8 @@ $notif = $_GET['action'] ?? null;
     </div>
 
 <?php elseif ($role === 'client'): ?>
-    <!-- VUE CLIENT -->
+
     <?php
-        // Grouper par mission
         $missions_groupees = [];
         foreach ($candidatures as $c) {
             $missions_groupees[$c['titre_mission']][] = $c;

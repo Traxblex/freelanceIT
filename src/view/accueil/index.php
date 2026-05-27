@@ -24,10 +24,17 @@
           <span><span class="block">Voir les freelances</span><span class="mt-0.5 block text-xs font-normal text-slate-300">Profils en cartes</span></span>
         </a>
         <a href="index.php?page=mission" class="group inline-flex items-center gap-3 rounded-2xl border border-white/25 bg-white/10 px-6 py-4 text-sm font-semibold text-white shadow-lg backdrop-blur-md transition hover:bg-white/20">
+<<<<<<< HEAD
           <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-500/80 text-white">
             <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
           </span>
           <span><span class="block">Explorer les missions</span><span class="mt-0.5 block text-xs font-normal text-slate-300">Projets disponibles</span></span>
+=======
+          <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-500/80 text-white">
+            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </span>
+          <span><span class="block">Voir les projets</span><span class="mt-0.5 block text-xs font-normal text-slate-300">Missions en cartes</span></span>
+>>>>>>> 251ba70d87e9a04f67e98ea1fb6f28fce23da305
         </a>
       </div>
       <dl class="mt-16 grid grid-cols-1 gap-8 sm:mt-20 lg:grid-cols-4">

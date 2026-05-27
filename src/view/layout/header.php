@@ -66,13 +66,10 @@
         </div>
     </nav>
     <script>
-  // On récupère le bouton et le menu mobile
   const btn = document.getElementById('mobile-menu-button');
   const menu = document.getElementById('mobile-menu');
 
-  // On écoute le clic sur le bouton
   btn.addEventListener('click', () => {
-    // La méthode toggle ajoute la classe 'hidden' si elle n'y est pas, et l'enlève si elle y est
     menu.classList.toggle('hidden');
   });
 </script>

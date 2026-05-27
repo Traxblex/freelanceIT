@@ -8,7 +8,7 @@ dev :
 
 	postuler a une mission
 	voir les mission
-	annuler une candidature a une mission
+	voir sa candidature
 	gerer sont profil.
 ...
 
@@ -17,7 +17,5 @@ entreprise :
 	voir les mission
 	modérer une candidature de mission
 	voir les profils des dev
+	contacter le dev
 …
-
-admin : 
-modérateur de tout les tables

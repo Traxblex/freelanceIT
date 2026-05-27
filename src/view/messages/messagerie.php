@@ -16,7 +16,6 @@
 
     <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
 
-        <!-- Liste des messages -->
         <div class="lg:col-span-1">
             <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
 
@@ -33,21 +32,20 @@
                             <li>
                                 <a href="index.php?page=messagerie&lire=<?= $msg['id'] ?>"
                                    class="flex items-start gap-3 px-4 py-4 hover:bg-gray-50 transition-colors <?= $actif ? 'bg-gray-50 border-l-2 border-gray-900' : '' ?>">
-                                    <!-- Avatar initiales -->
                                     <div class="flex-shrink-0 h-9 w-9 rounded-full bg-gray-200 flex items-center justify-center text-xs font-bold text-gray-600">
                                         <?= strtoupper(substr($msg['prenom'], 0, 1) . substr($msg['nom'], 0, 1)) ?>
                                     </div>
                                     <div class="flex-1 min-w-0">
                                         <div class="flex items-center justify-between gap-2">
                                             <p class="text-sm <?= $msg['lu'] == 0 ? 'font-bold text-gray-900' : 'font-medium text-gray-700' ?> truncate">
-                                                <?= htmlspecialchars($msg['prenom'] . ' ' . $msg['nom']) ?>
+                                                <?= ($msg['prenom'] . ' ' . $msg['nom']) ?>
                                             </p>
                                             <?php if ($msg['lu'] == 0): ?>
                                                 <span class="flex-shrink-0 h-2 w-2 rounded-full bg-gray-900"></span>
                                             <?php endif; ?>
                                         </div>
                                         <p class="text-xs <?= $msg['lu'] == 0 ? 'font-semibold text-gray-800' : 'text-gray-500' ?> truncate mt-0.5">
-                                            <?= htmlspecialchars($msg['sujet']) ?>
+                                            <?= ($msg['sujet']) ?>
                                         </p>
                                         <p class="text-xs text-gray-400 mt-0.5">
                                             <?= date('d/m/Y à H:i', strtotime($msg['date_envoi'])) ?>
@@ -61,20 +59,19 @@
             </div>
         </div>
 
-        <!-- Contenu du message -->
         <div class="lg:col-span-2">
             <?php if ($message_ouvert): ?>
                 <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 md:p-8">
                     <div class="flex items-start justify-between gap-4 mb-6">
                         <div>
-                            <h2 class="text-lg font-bold text-gray-900"><?= htmlspecialchars($message_ouvert['sujet']) ?></h2>
+                            <h2 class="text-lg font-bold text-gray-900"><?= ($message_ouvert['sujet']) ?></h2>
                             <div class="flex items-center gap-2 mt-2">
                                 <div class="h-7 w-7 rounded-full bg-gray-200 flex items-center justify-center text-xs font-bold text-gray-600">
                                     <?= strtoupper(substr($message_ouvert['prenom'], 0, 1) . substr($message_ouvert['nom'], 0, 1)) ?>
                                 </div>
                                 <div>
                                     <p class="text-sm font-medium text-gray-900">
-                                        <?= htmlspecialchars($message_ouvert['prenom'] . ' ' . $message_ouvert['nom']) ?>
+                                        <?= ($message_ouvert['prenom'] . ' ' . $message_ouvert['nom']) ?>
                                         <span class="ml-1 inline-flex items-center rounded-full bg-gray-100 px-2 py-0.5 text-xs font-medium text-gray-600">
                                             <?= ucfirst($message_ouvert['role']) ?>
                                         </span>
@@ -95,10 +92,9 @@
                     </div>
 
                     <div class="border-t border-gray-100 pt-6">
-                        <p class="text-sm text-gray-700 leading-relaxed whitespace-pre-line"><?= htmlspecialchars($message_ouvert['contenu']) ?></p>
+                        <p class="text-sm text-gray-700 leading-relaxed whitespace-pre-line"><?= ($message_ouvert['contenu']) ?></p>
                     </div>
 
-                    <!-- Bouton répondre -->
                     <?php if ($message_ouvert['role'] === 'client' && $_SESSION['user_role'] === 'freelance'): ?>
                         <div class="mt-6 border-t border-gray-100 pt-6">
                             <a href="index.php?page=contacter_freelance&id=<?= $message_ouvert['id_expediteur'] ?>"

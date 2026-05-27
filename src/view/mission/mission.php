@@ -14,7 +14,7 @@
                     <h1 class="text-lg font-semibold text-gray-800 leading-tight">
                         <?= ($mission['titre']) ?>
                     </h1>
-                    <span class="px-2 py-1 text-[10px] font-bold text-blue-800 uppercase bg-blue-100 rounded-full shrink-0">
+                    <span class="px-2 py-1 text-[10px] font-bold text-green-800 uppercase bg-green-100 rounded-full shrink-0">
                         <?= ($mission['statut']) ?>
                     </span>
                 </div>
