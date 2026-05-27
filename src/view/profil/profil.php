@@ -19,15 +19,6 @@
             <img src="public/uploads/<?=($profil['photo']) ?>" 
                 alt="Ma photo de profil" 
                 class="h-32 w-32 rounded-full object-cover border-4 border-white shadow-lg mb-3">
-            
-            <!-- NOUVEAU : La case à cocher pour supprimer -->
-            <div class="flex items-center space-x-2">
-                <input type="checkbox" id="supprimer_photo" name="supprimer_photo" value="1" class="rounded text-blue-600 focus:ring-blue-500">
-                <label for="supprimer_photo" class="text-sm text-red-600 font-medium cursor-pointer hover:text-red-800">
-                    Supprimer ma photo actuelle
-                </label>
-            </div>
-
         <?php else: ?>
             <div class="h-32 w-32 rounded-full bg-gray-200 border-4 border-white shadow-lg flex items-center justify-center text-4xl text-gray-400">
                 👤
@@ -62,7 +53,7 @@
                 </div>
 
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Tarif Horaire (€ / heure)</label>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Tarif Horaire (€ / jour)</label>
                     <input type="number" name="tarif_horaire" value="<?= ($profil['tarif_horaire']) ?>" 
                            placeholder="Ex: 50"
                            class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">

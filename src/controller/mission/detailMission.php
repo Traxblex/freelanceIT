@@ -12,6 +12,10 @@ $req = $bdd->prepare("SELECT missions.*, entreprises.nom_entreprise, entreprises
 $req->execute([$id_mission]);
 $mission = $req->fetch(PDO::FETCH_ASSOC);
 
+$req_candidatures = $bdd->prepare("SELECT COUNT(*) as total FROM candidatures WHERE id_mission = ?");
+$req_candidatures->execute([$id_mission]);
+$stats['nb_candidatures'] = $req_candidatures->fetch()['total'];
+
 $req_count = $bdd->prepare("SELECT COUNT(*) as total FROM missions WHERE id_entreprise = ?");
     $req_count->execute([$mission['id_entreprise']]);
     $stats['nb_missions'] = $req_count->fetch()['total'];

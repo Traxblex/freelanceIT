@@ -10,29 +10,27 @@ $user_id = $_SESSION['user_id'];
 $message_succes = null;
 $message_erreur = null;
 
-// --- TRAITEMENT DU FORMULAIRE ---
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nom        = trim($_POST['nom'] ?? '');
-    $prenom     = trim($_POST['prenom'] ?? '');
-    $email      = trim($_POST['email'] ?? '');
-    $entreprise = trim($_POST['entreprise'] ?? '');
-    $siret      = trim($_POST['siret'] ?? '');
-    $adresse    = trim($_POST['adresse'] ?? '');
-    $description= trim($_POST['description'] ?? '');
+    $nom        = ($_POST['nom'] ?? '');
+    $prenom     = ($_POST['prenom'] ?? '');
+    $email      = ($_POST['email'] ?? '');
+    $entreprise = ($_POST['entreprise'] ?? '');
+    $siret      = ($_POST['siret'] ?? '');
+    $adresse    = ($_POST['adresse'] ?? '');
+    $description= ($_POST['description'] ?? '');
 
-    // Validation basique
+
     if (empty($nom) || empty($prenom) || empty($email)) {
         $message_erreur = "Le nom, prénom et e-mail sont obligatoires.";
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $message_erreur = "L'adresse e-mail n'est pas valide.";
-    } elseif (!empty($siret) && (strlen($siret) !== 14 || !ctype_digit($siret))) {
+    } elseif (!empty($siret) && (strlen($siret) !== 14)) { 
         $message_erreur = "Le numéro SIRET doit contenir exactement 14 chiffres.";
     } else {
-        // Mise à jour utilisateurs (nom, prenom, email uniquement)
         $req = $bdd->prepare("UPDATE utilisateurs SET nom = ?, prenom = ?, email = ? WHERE id = ?");
         $req->execute([$nom, $prenom, $email, $user_id]);
 
-        // Vérifie si une ligne entreprise existe déjà
+
         $req_check = $bdd->prepare("SELECT id FROM entreprises WHERE id_utilisateur = ?");
         $req_check->execute([$user_id]);
         $existe = $req_check->fetch();
