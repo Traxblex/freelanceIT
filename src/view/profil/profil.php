@@ -53,11 +53,7 @@
                 </div>
 
                 <div>
-<<<<<<< HEAD
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Tarif Journalière (€ / jour)</label>
-=======
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Tarif Horaire (€ / jour)</label>
->>>>>>> 251ba70d87e9a04f67e98ea1fb6f28fce23da305
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Tarif journalier (€ / jour)</label>
                     <input type="number" name="tarif_horaire" value="<?= ($profil['tarif_horaire']) ?>" 
                            placeholder="Ex: 50"
                            class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
